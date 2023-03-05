@@ -1,12 +1,40 @@
 import { useState, useEffect } from 'react';
 import './Table.css';
 import Row, {Partition} from './Row';
+import Papa from 'papaparse';
 
 interface Props {
     flashSize: number;
 }
 
 export default function Table({flashSize}: Props) {
+    const csvString = `# Name,   Type, SubType, Offset,   Size, Flags
+    nvs,      data, nvs,     0x9000,   0x5000,
+    otadata,  data, ota,     0xe000,   0x2000,
+    app0,     app,  ota_0,   0x10000,  0x140000,
+    ffat0,   data, fat,  0x150000, 0x90000,
+    ffat,   data, fat,  0x1E0000, 0x220000,`;
+
+    const config: Papa.ParseConfig = {
+        delimiter: "",	// auto-detect
+        quoteChar: '"',
+        escapeChar: '"',
+        header: false,
+        transformHeader: undefined,
+        dynamicTyping: false,
+        preview: 0,
+        comments: "#",
+        step: undefined,
+        skipEmptyLines: false,
+        fastMode: undefined,
+        beforeFirstChunk: undefined,
+        transform: undefined,
+        delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP],
+        complete: (result: any) => console.dir(result.data)
+    }
+    useEffect(() => {
+        Papa.parse(csvString, config);
+    },[]);
 
     const [table, setTable] = useState<Partition[]>([
         {
