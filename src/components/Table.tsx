@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './Table.css';
 import Row, {Partition} from './Row';
 
-
 export default function Table() {
     const [table, setTable] = useState<Partition[]>([
         {
@@ -21,6 +20,13 @@ export default function Table() {
         },
 
     ]);
+    const blankPartition: Partition = {
+        name: "",
+        type: "app",
+        subType: "factory",
+        offset: table.length>0 ? table[table.length-1].offset+table[table.length-1].size : 0,
+        size: 0,
+    }
 
     return (
         <main>
@@ -37,6 +43,10 @@ export default function Table() {
                     return <Row table={table} setTable={setTable} i={i} key={i}/>
                 })
             }
+            <button className="add add-bottom" onClick={() => {
+            table.splice( table.length, 0, blankPartition );
+            setTable( [ ...table ] );
+            }}>-&gt;</button>
 
         </main>
     )
