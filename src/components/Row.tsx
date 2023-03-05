@@ -19,7 +19,9 @@ export default function Row({data}: Props) {
     <div className="row">
 
         <div className="column">
-            {data.name}
+            <input type="text" name="name">
+                {/* {data.name} */}
+            </input>
         </div>
 
         <div className="column">
@@ -63,14 +65,23 @@ export default function Row({data}: Props) {
         </div>
 
         <div className="column">
+            <input type="text" name="offset">
+
+            </input>
             0x{data.offset.toString(16)}
         </div>
 
         <div className="column">
+            <input type="text" name="size">
+
+            </input>
             0x{data.size.toString(16)}
         </div>
 
         <div className="column">
+            <input type="text" name="flags">
+
+            </input>
             {data.flags}
         </div>
 
