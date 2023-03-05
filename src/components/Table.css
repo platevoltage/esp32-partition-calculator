@@ -2,7 +2,7 @@ main {
     position: relative;
     background-color: #3c3c3c;
     width: 80vw;
-    height: 500px;
+    /* height: 500px; */
     border: 1px solid #000000;
 }
 
