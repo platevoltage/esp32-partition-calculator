@@ -25,7 +25,6 @@ export default function Row({table, setTable, i}: Props) {
                 table[i].name = e.target.value;
                 setTable([...table]);
             }}>
-                {/* {data.name} */}
             </input>
         </div>
 
@@ -82,7 +81,6 @@ export default function Row({table, setTable, i}: Props) {
             }}>
 
             </input>
-            {/* 0x{table[i].offset.toString(16)} */}
         </div>
 
         <div className="column">
@@ -90,8 +88,6 @@ export default function Row({table, setTable, i}: Props) {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
-
-            {/* {table[i].size.toString(16)} */}
             </input>
         </div>
 
