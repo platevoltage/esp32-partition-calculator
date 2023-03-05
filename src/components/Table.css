@@ -6,7 +6,7 @@ main {
     /* border: 1px solid #000000; */
 }
 
-input {
+.row input {
     background-color: #00000000;
     border: none;
     font-size: 1em;
