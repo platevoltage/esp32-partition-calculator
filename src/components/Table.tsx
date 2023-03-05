@@ -46,13 +46,6 @@ export default function Table({flashSize}: Props) {
         },
 
     ]);
-    const blankPartition: Partition = {
-        name: "",
-        type: "app",
-        subType: "factory",
-        offset: table.length>0 ? table[table.length-1].offset+table[table.length-1].size : 0,
-        size: 0,
-    }
 
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
@@ -63,6 +56,14 @@ export default function Table({flashSize}: Props) {
 
         const unusedSpace: number = partitionSize - nextOffset;
         return unusedSpace;
+    }
+
+    const blankPartition: Partition = {
+        name: "",
+        type: "app",
+        subType: "factory",
+        offset: table.length>0 ? table[table.length-1].offset+table[table.length-1].size : 0,
+        size: 0,
     }
 
     return (
@@ -81,7 +82,7 @@ export default function Table({flashSize}: Props) {
                     return (<div key={i}>
                         <Row table={table} setTable={setTable} i={i} />
                         <div style={{display: "flex", justifyContent: "flex-end"}}>
-                            {( unusedSpace !== 0 ) && <><div className="mismatch">{-unusedSpace} bytes</div></>}
+                            {( unusedSpace !== 0 ) && <><div className="mismatch" style={{backgroundColor: `${unusedSpace>0 ? "#ff9999" : "#ffffff"}`}}>{-unusedSpace} bytes</div></>}
                         </div>
                     </div>)
                 })
