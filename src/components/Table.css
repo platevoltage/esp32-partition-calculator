@@ -3,11 +3,14 @@ main {
     /* background-color: #3c3c3c; */
     width: 80vw;
     /* height: 500px; */
-    /* border: 1px solid #000000; */
+    /* border: 1px solid #30363d; */
+    /* border-radius: 10px; */
+    /* overflow: hidden; */
 }
 
 .row input {
     background-color: #00000000;
+    color: inherit;
     border: none;
     font-size: 1em;
     width: 70%;
@@ -20,21 +23,33 @@ select {
     border: none;
     border-radius: 0px;
     font-size: 1em;
+    color: inherit;
 }
 
 .row {
     height: 50px;
     width: 100%;
     margin-top: -1px;
-    border: 1px solid #000000;
+    margin-left: -1px;
+    
+    border: 1px solid #30363d;
 
     position: relative;
     display: flex;
-    background-color: #3c3c3c;
+    /* background-color: #3c3c3c00; */
+    color: #ffffff;
 }
 
 .header {
-    background-color: #5d4d4d;
+    background-color: #161b22;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 1em;
+    height: 2em;
+    font-size: .8em;
+}
+
+.bottom {
+    border-radius: 0px 0px 10px 10px; 
 }
 
 
@@ -42,8 +57,10 @@ select {
     position: relative;
     height: 100%;
     width: 100%;
-    border-right: 1px solid #000000;
+    /* border-right: 1px solid #30363d; */
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     /* display: inline-block; */
     /* background-color: #5d4d4d; */
 }
@@ -54,6 +71,7 @@ select {
     left: -26px;
     top: -.7em;
     background-color: #176e29;
+    border-radius: 2px
 }
 
 .add-bottom {
@@ -67,6 +85,8 @@ select {
     left: -26px;
     top: calc(50% - 1em);
     background-color: #9b1717;
+    color: inherit;
+    border-radius: 2px
 }
 
 .mismatch {

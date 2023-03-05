@@ -25,7 +25,7 @@ export default function Row({table, setTable, i}: Props) {
         size: 0,
     }
   return (
-    <div className="row">
+    <div className={`row ${i===table.length-1 && "bottom"}`}>
 
         <button className="add" onClick={() => {
             table.splice( i, 0, blankPartition );
