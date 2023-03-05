@@ -33,8 +33,7 @@ export default function Table({flashSize}: Props) {
         beforeFirstChunk: undefined,
         transform: undefined,
         delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP],
-        complete: (result: any) => {
-            console.dir(result.data);
+        complete: (result: Papa.ParseResult<string>) => {
             const _table: Partition[] = [];
             for (let partition of result.data) {
                 _table.push({
