@@ -1,0 +1,28 @@
+main {
+    position: relative;
+    background-color: #3c3c3c;
+    width: 80vw;
+    height: 500px;
+    border: 1px solid #000000;
+}
+
+header {
+    background-color: #5d4d4d;
+}
+
+.row {
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    position: relative;
+    display: flex;
+}
+
+.column {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-right: 1px solid #000000;
+    /* display: inline-block; */
+    /* background-color: #5d4d4d; */
+}
