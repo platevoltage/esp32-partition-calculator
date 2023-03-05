@@ -100,8 +100,14 @@ export default function Row({table, setTable, i}: Props) {
 
             </input>
             <div className="up-down">
-                <button>up</button>
-                <button>dn</button>
+                <button onClick={() => {
+                    table[i].offset+= 4096;
+                    setTable([...table]);
+                }}>up</button>
+                <button onClick={() => {
+                    table[i].offset-= 4096;
+                    setTable([...table]);
+                }}>dn</button>
             </div>
         </div>
 
@@ -111,6 +117,16 @@ export default function Row({table, setTable, i}: Props) {
                 setTable([...table]);
             }}>
             </input>
+            <div className="up-down">
+                <button onClick={() => {
+                    table[i].size+= 4096;
+                    setTable([...table]);
+                }}>up</button>
+                <button onClick={() => {
+                    table[i].size-= 4096;
+                    setTable([...table]);
+                }}>dn</button>
+            </div>
         </div>
 
         <div className="column">
