@@ -10,6 +10,22 @@ header {
     background-color: #5d4d4d;
 }
 
+input {
+    background-color: #00000000;
+    border: none;
+    font-size: 1em;
+    width: 70%;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #00000000;
+    border: none;
+    border-radius: 0px;
+    font-size: 1em;
+}
+
 .row {
     height: 50px;
     width: 100%;
