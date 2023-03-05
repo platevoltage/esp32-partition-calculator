@@ -21,7 +21,7 @@ export default function Row({table, setTable, i}: Props) {
     <div className="row">
 
         <div className="column">
-            <input type="text" name="name" onChange={(e) => {
+            <input type="text" name="name" value={table[i].name} spellCheck="false" onChange={(e) => {
                 table[i].name = e.target.value;
                 setTable([...table]);
             }}>
@@ -76,7 +76,7 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
-            0x<input type="text" name="offset" onChange={(e) => {
+            0x<input type="text" name="offset" value={(table[i].offset || 0).toString(16)} onChange={(e) => {
                 table[i].offset = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
@@ -86,17 +86,17 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
-            0x<input type="text" name="size" onChange={(e) => {
+            0x<input type="text" name="size" value={(table[i].size || 0).toString(16)} onChange={(e) => {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
 
+            {/* {table[i].size.toString(16)} */}
             </input>
-            {/* 0x{table[i].size.toString(16)} */}
         </div>
 
         <div className="column">
-            <input type="text" name="flags" onChange={(e) => {
+            <input type="text" name="flags" spellCheck="false" onChange={(e) => {
                 table[i].flags = e.target.value;
                 setTable([...table]);
             }}>
