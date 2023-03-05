@@ -55,7 +55,13 @@ export default function Table({flashSize}: Props) {
     }
 
     function getUnusedSpace(i: number) {
-        const unusedSpace: number = table[i].offset + table[i].size - table[i+1]?.offset || 0;
+        const partitionSize = table[i].offset + table[i].size;
+        let nextOffset = table[i+1]?.offset;
+        if (isNaN(nextOffset)) {
+            nextOffset = flashSize;
+        }
+
+        const unusedSpace: number = partitionSize - nextOffset;
         return unusedSpace;
     }
 

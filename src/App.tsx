@@ -8,8 +8,10 @@ function App() {
   return (
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
-        <input type="text" style={{width: "10em"}} onChange={(e) =>  setFlashSize(+e.target.value) }></input><br></br>
-        <Table flashSize={flashSize} />
+        <label htmlFor="flashSize"  style={{width: "10em"}}>Flash Size
+        <input name="flash-size" type="text" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
+        </label><br></br>
+        <Table flashSize={flashSize*1024} />
       </div>
     </div>
   );
