@@ -18,7 +18,7 @@ export default function Table({flashSize}: Props) {
     
     const [table, setTable] = useState<Partition[]>([]);
 
-    const config: Papa.ParseConfig = {
+    const parseConfig: Papa.ParseConfig = {
         delimiter: "",	// auto-detect
         quoteChar: '"',
         escapeChar: '"',
@@ -43,14 +43,26 @@ export default function Table({flashSize}: Props) {
                     offset: parseInt(partition[3], 16), 
                     size: parseInt(partition[4], 16),
                     flags: partition[5].trim()
-                })
+                });
             }
             setTable(_table);
         }
     }
+
+
+    const unparseConfig: Papa.UnparseConfig = {
+        quotes: false, //or array of booleans
+        quoteChar: '"',
+        escapeChar: '"',
+        delimiter: ",\t",
+        header: false,
+        newline: "\n",
+        skipEmptyLines: false, //other option is 'greedy', meaning skip delimiters, quotes, and whitespace.
+        // columns: null //or array of strings
+    }
     
     useEffect(() => {
-        Papa.parse(csvString, config);
+        Papa.parse(csvString, parseConfig);
     },[]);
 
     function getUnusedSpace(i: number) {
@@ -97,6 +109,22 @@ export default function Table({flashSize}: Props) {
             table.splice( table.length, 0, blankPartition );
             setTable( [ ...table ] );
             }}>-&gt;</button>
+
+            <button className="save" onClick={() => {
+                const _table = [];
+                for (let row of table) {
+                    _table.push({
+                        name: row.name,
+                        type: row.type,
+                        subType: row.subType,
+                        offset: `0x${row.offset.toString(16)}`,
+                        size: `0x${row.offset.toString(16)}`,
+                        flags:  row.flags,
+                    })
+                }
+                const outputString = `# Name,\tType,\tSubType,\tOffset,\tSize,\tFlags \n ${Papa.unparse(_table, unparseConfig)}`
+                console.log( outputString );
+            }}>Save</button>
 
 
 
