@@ -26,20 +26,16 @@ export default function Row({table, setTable, i}: Props) {
     }
   return (
     <div className="row">
-        {i===table.length-1 && <div className="add add-bottom" onClick={() => {
-            table.splice( i+1, 0, blankPartition );
-            setTable( [ ...table ] );
-        }}>-&gt;</div>}
 
-        <div className="add" onClick={() => {
+        <button className="add" onClick={() => {
             table.splice( i, 0, blankPartition );
             setTable( [ ...table ] );
-        }}>-&gt;</div>
+        }}>-&gt;</button>
 
-        <div className="remove" onClick={() => {
+        <button className="remove" onClick={() => {
             table.splice( i, 1);
             setTable( [ ...table ] );
-        }}>X</div>
+        }}>X</button>
 
 
         <div className="column">
