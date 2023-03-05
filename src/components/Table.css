@@ -89,3 +89,9 @@ select {
     background-color: #ffffff;
     border: 1px solid #000000;
 }
+
+.save {
+    width: 100px;
+    margin: 20px;
+    position: absolute;
+}
