@@ -42,3 +42,22 @@ select {
     /* display: inline-block; */
     /* background-color: #5d4d4d; */
 }
+
+.add {
+    position: absolute;
+    left: -26px;
+    top: -.7em;
+    background-color: #176e29;
+}
+
+.add-bottom {
+    top: auto;
+    bottom: -.5em
+}
+
+.remove {
+    position: absolute;
+    left: -26px;
+    top: calc(50% - 1em);
+    background-color: #9b1717;
+}

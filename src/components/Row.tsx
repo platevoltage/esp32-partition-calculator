@@ -17,8 +17,30 @@ interface Props {
 
 
 export default function Row({table, setTable, i}: Props) {
+    const blankPartition: Partition = {
+        name: "",
+        type: "app",
+        subType: "factory",
+        offset: table[i].offset+table[i].size,
+        size: 0,
+    }
   return (
     <div className="row">
+        {i===table.length-1 && <div className="add add-bottom" onClick={() => {
+            table.splice( i+1, 0, blankPartition );
+            setTable( [ ...table ] );
+        }}>-&gt;</div>}
+
+        <div className="add" onClick={() => {
+            table.splice( i, 0, blankPartition );
+            setTable( [ ...table ] );
+        }}>-&gt;</div>
+
+        <div className="remove" onClick={() => {
+            table.splice( i, 1);
+            setTable( [ ...table ] );
+        }}>X</div>
+
 
         <div className="column">
             <input type="text" name="name" value={table[i].name} spellCheck="false" onChange={(e) => {
