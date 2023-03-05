@@ -21,7 +21,7 @@ export default function Row({table, setTable, i}: Props) {
         name: "",
         type: "app",
         subType: "factory",
-        offset: table[i].offset+table[i].size,
+        offset: table[i-1]?.offset+table[i-1]?.size || 36864,
         size: 0,
     }
   return (

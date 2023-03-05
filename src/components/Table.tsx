@@ -81,7 +81,7 @@ export default function Table({flashSize}: Props) {
                     return (<div key={i}>
                         <Row table={table} setTable={setTable} i={i} />
                         <div style={{display: "flex", justifyContent: "flex-end"}}>
-                            {( unusedSpace !== 0 ) && <><div className="mismatch">{unusedSpace} bytes</div></>}
+                            {( unusedSpace !== 0 ) && <><div className="mismatch">{-unusedSpace} bytes</div></>}
                         </div>
                     </div>)
                 })
