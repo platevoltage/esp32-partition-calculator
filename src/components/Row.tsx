@@ -21,7 +21,10 @@ export default function Row({table, setTable, i}: Props) {
     <div className="row">
 
         <div className="column">
-            <input type="text" name="name">
+            <input type="text" name="name" onChange={(e) => {
+                table[i].name = e.target.value;
+                setTable([...table]);
+            }}>
                 {/* {data.name} */}
             </input>
         </div>
@@ -73,21 +76,30 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
-            <input type="text" name="offset">
+            0x<input type="text" name="offset" onChange={(e) => {
+                table[i].offset = parseInt(e.target.value, 16);
+                setTable([...table]);
+            }}>
 
             </input>
-            0x{table[i].offset.toString(16)}
+            {/* 0x{table[i].offset.toString(16)} */}
         </div>
 
         <div className="column">
-            <input type="text" name="size">
+            0x<input type="text" name="size" onChange={(e) => {
+                table[i].size = parseInt(e.target.value, 16);
+                setTable([...table]);
+            }}>
 
             </input>
-            0x{table[i].size.toString(16)}
+            {/* 0x{table[i].size.toString(16)} */}
         </div>
 
         <div className="column">
-            <input type="text" name="flags">
+            <input type="text" name="flags" onChange={(e) => {
+                table[i].flags = e.target.value;
+                setTable([...table]);
+            }}>
 
             </input>
             {table[i].flags}
