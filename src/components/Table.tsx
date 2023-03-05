@@ -118,7 +118,7 @@ export default function Table({flashSize}: Props) {
                         type: row.type,
                         subType: row.subType,
                         offset: `0x${row.offset.toString(16)}`,
-                        size: `0x${row.offset.toString(16)}`,
+                        size: `0x${row.size.toString(16)}`,
                         flags:  row.flags,
                     })
                 }
