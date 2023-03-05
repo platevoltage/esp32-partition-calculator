@@ -38,12 +38,12 @@ export default function Table({flashSize}: Props) {
             const _table: Partition[] = [];
             for (let partition of result.data) {
                 _table.push({
-                    name: partition[0], 
-                    type: partition[1], 
-                    subType: partition[2], 
+                    name: partition[0].trim(), 
+                    type: partition[1].trim(), 
+                    subType: partition[2].trim(), 
                     offset: parseInt(partition[3], 16), 
                     size: parseInt(partition[4], 16),
-                    flags: partition[5]
+                    flags: partition[5].trim()
                 })
             }
             setTable(_table);
