@@ -1,13 +1,9 @@
 main {
     position: relative;
-    background-color: #3c3c3c;
+    /* background-color: #3c3c3c; */
     width: 80vw;
     /* height: 500px; */
-    border: 1px solid #000000;
-}
-
-header {
-    background-color: #5d4d4d;
+    /* border: 1px solid #000000; */
 }
 
 input {
@@ -29,10 +25,18 @@ select {
 .row {
     height: 50px;
     width: 100%;
-    border-bottom: 1px solid #000000;
+    margin-top: -1px;
+    border: 1px solid #000000;
+
     position: relative;
     display: flex;
+    background-color: #3c3c3c;
 }
+
+.header {
+    background-color: #5d4d4d;
+}
+
 
 .column {
     position: relative;
@@ -62,4 +66,11 @@ select {
     left: -26px;
     top: calc(50% - 1em);
     background-color: #9b1717;
+}
+
+.mismatch {
+
+    background-color: #e9d8d8;
+    margin: 1em;
+    padding: .4em;
 }
