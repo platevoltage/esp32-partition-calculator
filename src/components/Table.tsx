@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import './Table.css';
 import Row, {Partition} from './Row';
 
-export default function Table() {
+interface Props {
+    flashSize: number;
+}
+
+export default function Table({flashSize}: Props) {
 
     const [table, setTable] = useState<Partition[]>([
         {
