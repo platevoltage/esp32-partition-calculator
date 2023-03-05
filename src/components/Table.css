@@ -71,7 +71,8 @@ select {
     left: -26px;
     top: -.7em;
     background-color: #176e29;
-    border-radius: 2px
+    border-radius: 2px;
+    color: inherit;
 }
 
 .add-bottom {
@@ -99,15 +100,21 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 10px;
+    /* width: 10px; */
+    height: 2em;
+    margin-top: .5em;
     /* background-color: #e9d8d8; */
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    overflow: hidden;
 }
 
 .up-down button {
     height: 16px;
-    width: 30px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    width: 2.4em;
+    background-color: #161b22;
+    border: .5px solid #30363d;
+    color: inherit;
 }
 
 .save {

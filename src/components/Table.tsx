@@ -108,7 +108,7 @@ export default function Table({flashSize}: Props) {
             <button className="add add-bottom" onClick={() => {
             table.splice( table.length, 0, blankPartition );
             setTable( [ ...table ] );
-            }}>-&gt;</button>
+            }}><i className="bi bi-arrow-right"></i></button>
 
             <button className="save" onClick={() => {
                 const _table = [];

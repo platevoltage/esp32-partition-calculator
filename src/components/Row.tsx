@@ -30,12 +30,12 @@ export default function Row({table, setTable, i}: Props) {
         <button className="add" onClick={() => {
             table.splice( i, 0, blankPartition );
             setTable( [ ...table ] );
-        }}>-&gt;</button>
+        }}><i className="bi bi-arrow-right"></i></button>
 
         <button className="remove" onClick={() => {
             table.splice( i, 1);
             setTable( [ ...table ] );
-        }}>X</button>
+        }}><i className="bi bi-scissors"></i></button>
 
 
         <div className="column">
@@ -103,11 +103,11 @@ export default function Row({table, setTable, i}: Props) {
                 <button onClick={() => {
                     table[i].offset+= 4096;
                     setTable([...table]);
-                }}>up</button>
+                }}><i className="bi bi-caret-up-fill"></i></button>
                 <button onClick={() => {
                     table[i].offset-= 4096;
                     setTable([...table]);
-                }}>dn</button>
+                }}><i className="bi bi-caret-down-fill"></i></button>
             </div>
         </div>
 
@@ -121,11 +121,11 @@ export default function Row({table, setTable, i}: Props) {
                 <button onClick={() => {
                     table[i].size+= 4096;
                     setTable([...table]);
-                }}>up</button>
+                }}><i className="bi bi-caret-up-fill"></i></button>
                 <button onClick={() => {
                     table[i].size-= 4096;
                     setTable([...table]);
-                }}>dn</button>
+                }}><i className="bi bi-caret-down-fill"></i></button>
             </div>
         </div>
 
