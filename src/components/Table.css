@@ -43,6 +43,7 @@ select {
     height: 100%;
     width: 100%;
     border-right: 1px solid #000000;
+    display: flex;
     /* display: inline-block; */
     /* background-color: #5d4d4d; */
 }
@@ -73,4 +74,19 @@ select {
     background-color: #e9d8d8;
     margin: 1em;
     padding: .4em;
+}
+
+.up-down {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10px;
+    /* background-color: #e9d8d8; */
+}
+
+.up-down button {
+    height: 16px;
+    width: 30px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
 }
