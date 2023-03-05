@@ -15,6 +15,9 @@ export default function Table({flashSize}: Props) {
     ffat0,   data, fat,  0x150000, 0x90000,
     ffat,   data, fat,  0x1E0000, 0x220000,`;
 
+    
+    const [table, setTable] = useState<Partition[]>([]);
+
     const config: Papa.ParseConfig = {
         delimiter: "",	// auto-detect
         quoteChar: '"',
@@ -30,50 +33,26 @@ export default function Table({flashSize}: Props) {
         beforeFirstChunk: undefined,
         transform: undefined,
         delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP],
-        complete: (result: any) => console.dir(result.data)
+        complete: (result: any) => {
+            console.dir(result.data);
+            const _table: Partition[] = [];
+            for (let partition of result.data) {
+                _table.push({
+                    name: partition[0], 
+                    type: partition[1], 
+                    subType: partition[2], 
+                    offset: parseInt(partition[3], 16), 
+                    size: parseInt(partition[4], 16),
+                    flags: partition[5]
+                })
+            }
+            setTable(_table);
+        }
     }
+    
     useEffect(() => {
         Papa.parse(csvString, config);
     },[]);
-
-    const [table, setTable] = useState<Partition[]>([
-        {
-            name: "nvs", 
-            type: "data", 
-            subType: "nvs", 
-            offset: 0x9000, 
-            size: 0x5000,
-        },
-        {
-            name: "otadata", 
-            type: "data", 
-            subType: "ota", 
-            offset: 0xe000, 
-            size: 0x2000,
-        },
-        {
-            name: "app0", 
-            type: "app", 
-            subType: "ota_0", 
-            offset: 0x10000, 
-            size: 0x140000,
-        },
-        {
-            name: "ffat0", 
-            type: "data", 
-            subType: "fat", 
-            offset: 0x150000, 
-            size: 0x90000,
-        },
-        {
-            name: "ffat", 
-            type: "data", 
-            subType: "fat", 
-            offset: 0x1E0000, 
-            size: 0x220000,
-        },
-
-    ]);
 
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
@@ -81,7 +60,7 @@ export default function Table({flashSize}: Props) {
         if (isNaN(nextOffset)) {
             nextOffset = flashSize;
         }
-
+        
         const unusedSpace: number = partitionSize - nextOffset;
         return unusedSpace;
     }
