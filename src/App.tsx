@@ -12,7 +12,7 @@ import {Partition} from './components/Row';
 function App() {
   const [flashSize, setFlashSize] = useState<number>(4096);
   const [table, setTable] = useState<Partition[]>([]);
-  const [displayHex, setDisplayHex] = useState<boolean>(true);
+  const [displayDec, setDisplayDec] = useState<boolean>(true);
 
   useEffect(() => { //update local storage
     if (table.length > 0) {
@@ -24,9 +24,9 @@ function App() {
   return (
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
-        <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayHex={displayHex}/>
+        <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayDec={displayDec}/>
         
-        <Options flashSize={flashSize} displayHex={displayHex} setFlashSize={setFlashSize} setDisplayHex={setDisplayHex} setTable={setTable}/>
+        <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} setTable={setTable}/>
 
       </div>
     </div>

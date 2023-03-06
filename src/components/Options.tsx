@@ -7,12 +7,12 @@ import "./Options.css"
 interface Props {
     flashSize: number;
     setFlashSize: (value: number) => void;
-    displayHex: boolean;
-    setDisplayHex: (value: boolean) => void;
+    displayDec: boolean;
+    setDisplayDec: (value: boolean) => void;
     setTable: (value: Partition[]) => void;
 }
 
-export default function Options({flashSize, setFlashSize, displayHex, setDisplayHex, setTable}: Props) {
+export default function Options({flashSize, setFlashSize, displayDec, setDisplayDec, setTable}: Props) {
   return (
     <div className="options">
 
@@ -23,7 +23,7 @@ export default function Options({flashSize, setFlashSize, displayHex, setDisplay
 
             <div className="options-column">
                 <label htmlFor="hex">
-                <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
+                <input type="checkbox" name="hex" checked={!displayDec} onChange={() => setDisplayDec(!displayDec)} />
                 Decimal Values
                 </label> 
             </div>

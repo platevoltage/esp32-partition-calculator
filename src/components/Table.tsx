@@ -7,10 +7,10 @@ interface Props {
     table: Partition[];
     setTable: (table: Partition[]) => void;
     flashSize: number;
-    displayHex: boolean;
+    displayDec: boolean;
 }
 
-export default function Table({table, setTable, flashSize, displayHex}: Props) {
+export default function Table({table, setTable, flashSize, displayDec}: Props) {
     const [green, setGreen] = useState<boolean>(false);
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
@@ -37,7 +37,7 @@ export default function Table({table, setTable, flashSize, displayHex}: Props) {
             {
                 table.map((_, i) => {
                     return (<div key={i}>
-                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayHex={displayHex}/>
+                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayDec={displayDec}/>
                     </div>)
                 })
             }
