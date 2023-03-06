@@ -10,3 +10,13 @@ h1 {
   font-weight: 500;
   font-size: 2em;
 }
+
+a {
+  color: #aaaaaa;
+}
+
+.footer {
+  margin-top: 4em;
+  margin-bottom: 1em;
+  font-size: .8em;
+}
