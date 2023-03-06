@@ -28,7 +28,7 @@ export default function Row({table, setTable, i, unusedSpace, displayHex}: Props
 
   return (
     <>
-    <div className="green-row" style={{height: `${green ? "1em" : "0em"}`}}>
+    <div className="green-row" style={{height: `${green ? ".5em" : "0em"}`}}>
         <AddRow table={table} setTable={setTable} i={i} setGreen={setGreen}/>
     </div>
     <div className={`row ${i===table.length-1 && "bottom"}`} style={{backgroundColor: `${red ? "#ff000022" : "inherit"}`}}>

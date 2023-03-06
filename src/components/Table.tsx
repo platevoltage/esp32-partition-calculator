@@ -41,7 +41,7 @@ export default function Table({table, setTable, flashSize, displayHex}: Props) {
                     </div>)
                 })
             }
-            <div className="green-row bottom" style={{height: `${green ? "1em" : "0em"}`}}>
+            <div className="green-row bottom" style={{height: `${green ? ".5em" : "0em"}`}}>
                 <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} />
             </div>
 

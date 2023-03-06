@@ -4,6 +4,7 @@ import Table from './components/Table';
 import FileSelect from './components/FileSelect';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import FlashSize from './components/FlashSize';
+import Options from './components/Options';
 import {Partition} from './components/Row';
 import Papa from 'papaparse';
 
@@ -27,16 +28,9 @@ function App() {
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
         <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayHex={displayHex}/>
-        <br></br>
-        <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
-        <br></br>
-        <FileSelect setTable={setTable} />
-        <br></br>
         
-        <label htmlFor="hex">
-          <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
-          Decimal Values
-        </label> 
+        <Options flashSize={flashSize} displayHex={displayHex} setFlashSize={setFlashSize} setDisplayHex={setDisplayHex} setTable={setTable}/>
+
       </div>
     </div>
   );
