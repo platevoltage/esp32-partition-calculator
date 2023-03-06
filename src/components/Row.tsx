@@ -80,6 +80,9 @@ export default function Row({table, setTable, i, unusedSpace}: Props) {
                     <option value="ota">ota</option>
                     <option value="phy">phy</option>
                     <option value="nvs">nvs</option>
+                    <option value="spiffs">spiffs</option>
+                    <option value="fat">fat</option>
+                    <option value="coredump">coredump</option>
                 </>
                 }
 
