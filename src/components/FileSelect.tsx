@@ -14,7 +14,7 @@ async function getCSV(fileName: string) {
     if (!res.ok) {
       throw res;
     }
-    return res.text();
+    return (await res.text()).trim();
   }
 
 export default function FileSelect({setTable}: Props) {
@@ -74,23 +74,23 @@ export default function FileSelect({setTable}: Props) {
             <select name="presets" onChange={(e) => {
                 (async () => Papa.parse(await getCSV(e.target.value), parseConfig))();
             }}>
-                <option value="default.csv">default</option>
-                <option value="default_ffat.csv">default_ffat</option>
-                <option value="ffat.csv">ffat</option>
-                <option value="huge_app.csv">huge_app</option>
-                <option value="minimal.csv">minimal</option>
-                <option value="no_ota.csv">no_ota</option>
-                <option value="min_spiffs.csv">min_spiffs</option>
-                <option value="bare_minimum_2MB.csv">bare_minimum_2MB</option>
-                <option value="noota_3g.csv">noota_3g</option>
-                <option value="noota_3gffat.csv">noota_3gffat</option>
-                <option value="noota_ffat.csv">noota_ffat</option>
-                <option value="default_8MB.csv">default_8MB</option>
-                <option value="max_app_8MB.csv">max_app_8MB</option>
-                <option value="large_spiffs_16MB.csv">large_spiffs_16MB</option>
-                <option value="default_16MB.csv">default_16MB</option>
-                <option value="app3M_fat9M_16MB.csv">app3M_fat9M_16MB</option>
-                <option value="rainmaker.csv">rainmaker</option>
+                <option value="default.csv">Default 4MB with spiffs (1.2 APP/1.5MB SPIFFS)</option>
+                <option value="default_ffat.csv">Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
+                {/* <option value="ffat.csv">ffat</option> */}
+                <option value="default_8MB.csv">8M with spiffs (3MB APP/1.5MB SPIFFS)</option>
+                <option value="minimal.csv">Minimal (1.3MB APP/700KB SPIFFS)</option>
+                <option value="no_ota.csv">No OTA (2MB APP/2MB SPIFFS)</option>
+                <option value="noota_3g.csv">No OTA (1MB APP/3MB SPIFFS)</option>
+                <option value="noota_ffat.csv">No OTA (2MB APP/2MB FATFS)</option>
+                <option value="noota_3gffat.csv">No OTA (1MB APP/3MB FATFS)</option>
+                <option value="huge_app.csv">Huge App (3MB No OTA/1MB SPIFFS)</option>
+                <option value="min_spiffs.csv">Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)</option>
+                {/* <option value="bare_minimum_2MB.csv">bare_minimum_2MB</option> */}
+                {/* <option value="max_app_8MB.csv">max_app_8MB</option> */}
+                {/* <option value="large_spiffs_16MB.csv">large_spiffs_16MB</option> */}
+                <option value="default_16MB.csv">16M Flash (2MB APP/12.5MB FATFS)</option>
+                <option value="app3M_fat9M_16MB.csv">16M Flash (3MB APP/9.9MB FATFS)</option>
+                <option value="rainmaker.csv">RainMaker</option>
 
                 
             </select>
