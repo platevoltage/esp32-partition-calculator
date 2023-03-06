@@ -1,5 +1,6 @@
 import React from 'react'
 import UpDown from './UpDown';
+import AddRow from './AddRow';
 
 export interface Partition {
     name: string;
@@ -18,20 +19,15 @@ interface Props {
 
 
 export default function Row({table, setTable, i}: Props) {
-    const blankPartition: Partition = {
-        name: "",
-        type: "app",
-        subType: "factory",
-        offset: table[i-1]?.offset+table[i-1]?.size || 36864,
-        size: 0,
-    }
+
   return (
     <div className={`row ${i===table.length-1 && "bottom"}`}>
 
-        <button className="add" onClick={() => {
+        {/* <button className="add" onClick={() => {
             table.splice( i, 0, blankPartition );
             setTable( [ ...table ] );
-        }}><i className="bi bi-arrow-right"></i></button>
+        }}><i className="bi bi-arrow-right"></i></button> */}
+        <AddRow table={table} setTable={setTable} i={i}/>
 
         <button className="remove" onClick={() => {
             table.splice( i, 1);

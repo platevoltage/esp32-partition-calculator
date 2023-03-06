@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './Table.css';
 import Row, {Partition} from './Row';
 import Papa from 'papaparse';
+import AddRow from './AddRow';
 
 interface Props {
     flashSize: number;
@@ -105,10 +106,7 @@ export default function Table({flashSize}: Props) {
                     </div>)
                 })
             }
-            <button className="add add-bottom" onClick={() => {
-            table.splice( table.length, 0, blankPartition );
-            setTable( [ ...table ] );
-            }}><i className="bi bi-arrow-right"></i></button>
+            <AddRow table={table} setTable={setTable} i={table.length}/>
 
             <button className="save" onClick={() => {
                 const _table = [];

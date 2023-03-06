@@ -65,20 +65,6 @@ select {
     /* background-color: #5d4d4d; */
 }
 
-.add {
-    border: 0;
-    position: absolute;
-    left: -26px;
-    top: -.7em;
-    background-color: #176e29;
-    border-radius: 2px;
-    color: inherit;
-}
-
-.add-bottom {
-    top: auto;
-    bottom: -.5em
-}
 
 .remove {
     border: 0;
