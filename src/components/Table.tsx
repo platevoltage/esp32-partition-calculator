@@ -44,24 +44,6 @@ export default function Table({table, setTable, flashSize, displayDec}: Props) {
             <div className="green-row bottom" style={{height: `${green ? ".5em" : "0em"}`}}>
                 <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} />
             </div>
-
-            {/* <button className="save" onClick={() => {
-                const _table = [];
-                for (let row of table) {
-                    _table.push({
-                        name: row.name,
-                        type: row.type,
-                        subType: row.subType,
-                        offset: `0x${row.offset.toString(16)}`,
-                        size: `0x${row.size.toString(16)}`,
-                        flags:  row.flags,
-                    })
-                }
-
-            }}>Save</button> */}
-
-
-
         </main>
     )
 }

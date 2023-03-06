@@ -38,6 +38,15 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
             </div>
         </div>
 
+        <div className="options-row">
+            <div className="options-column">
+                {/* <button>Load from file</button> */}
+            </div>
+            <div className="options-column">
+                
+            </div>
+        </div>
+
     </div>
   )
 }
