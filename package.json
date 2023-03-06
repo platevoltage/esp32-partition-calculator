@@ -1,5 +1,5 @@
 {
-  "homepage": "https://platevoltage.github.io/esp32-partition-calculator",
+  "homepage": "https://platevoltage.github.io/esp32-partition-calculator" ,
   "name": "esp32-partition-calculator",
   "version": "0.1.0",
   "private": true,
