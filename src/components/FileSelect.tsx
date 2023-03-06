@@ -61,19 +61,19 @@ export default function FileSelect({setTable}: Props) {
 
     useEffect(() => {
 
-        // (async () => Papa.parse(await getCSV(), parseConfig))();
+        (async () => Papa.parse(await getCSV("default.csv"), parseConfig))();
 
     },[]);
 
-//     app3M_fat9M_16MB.csv  default_16MB.csv      ffat.csv              max_app_8MB.csv       no_ota.csv            noota_ffat.csv
-// bare_minimum_2MB.csv  default_8MB.csv       huge_app.csv          min_spiffs.csv        noota_3g.csv          rainmaker.csv
-// default.csv           default_ffat.csv      large_spiffs_16MB.csv minimal.csv           noota_3gffat.csv
-
     return (
-        <div>
-            <select name="presets" onChange={(e) => {
-                (async () => Papa.parse(await getCSV(e.target.value), parseConfig))();
+        <div className="select">
+            <select name="presets" value="none" onChange={(e) => {
+                if (e.target.value !== "none") {
+                    (async () => Papa.parse(await getCSV(e.target.value), parseConfig))();
+                }
+
             }}>
+                <option value="none">Load Example Table from Arduino</option>
                 <option value="default.csv">Default 4MB with spiffs (1.2 APP/1.5MB SPIFFS)</option>
                 <option value="default_ffat.csv">Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
                 {/* <option value="ffat.csv">ffat</option> */}
