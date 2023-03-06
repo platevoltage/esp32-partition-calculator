@@ -9,6 +9,7 @@ main {
 }
 
 .row input {
+    
     background-color: #00000000;
     color: inherit;
     border: none;
@@ -24,6 +25,7 @@ select {
     border-radius: 0px;
     font-size: 1em;
     color: inherit;
+    width: 70%;
 }
 
 .row {
@@ -77,7 +79,7 @@ select {
     position: relative;
     height: 100%;
     width: 100%;
-    /* border-right: 1px solid #30363d; */
+    border-right: 1px solid #30363d;
     display: flex;
     flex-direction: row;
     justify-content: center;

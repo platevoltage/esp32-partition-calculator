@@ -7,9 +7,10 @@ interface Props {
     table: Partition[];
     setTable: (table: Partition[]) => void;
     flashSize: number;
+    displayHex: boolean;
 }
 
-export default function Table({table, setTable, flashSize}: Props) {
+export default function Table({table, setTable, flashSize, displayHex}: Props) {
     const [green, setGreen] = useState<boolean>(false);
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
@@ -18,8 +19,8 @@ export default function Table({table, setTable, flashSize}: Props) {
             nextOffset = flashSize;
         }
         
-        const unusedSpace: number = partitionSize - nextOffset;
-        return -unusedSpace;
+        const unusedSpace: number = -(partitionSize - nextOffset);
+        return unusedSpace;
     }
 
 
@@ -36,12 +37,12 @@ export default function Table({table, setTable, flashSize}: Props) {
             {
                 table.map((_, i) => {
                     return (<div key={i}>
-                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)}/>
+                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayHex={displayHex}/>
                     </div>)
                 })
             }
             <div className="green-row bottom" style={{height: `${green ? "1em" : "0em"}`}}>
-                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen}/>
+                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} />
             </div>
 
             {/* <button className="save" onClick={() => {

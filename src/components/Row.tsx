@@ -17,10 +17,11 @@ interface Props {
     setTable: (data: Partition[]) => void;
     i: number;
     unusedSpace: number;
+    displayHex: boolean;
 }
 
 
-export default function Row({table, setTable, i, unusedSpace}: Props) {
+export default function Row({table, setTable, i, unusedSpace, displayHex}: Props) {
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
@@ -92,8 +93,8 @@ export default function Row({table, setTable, i, unusedSpace}: Props) {
 
         <div className="column">
 
-            <input type="text" name="offset" value={`0x${(table[i].offset || 0).toString(16).toUpperCase()}`} onChange={(e) => {
-                table[i].offset = parseInt(e.target.value, 16);
+            <input type="text" name="offset" value={displayHex ? `${(table[i].offset || 0).toString()}` : `0x${(table[i].offset || 0).toString(16).toUpperCase()}`} onChange={(e) => {
+                table[i].offset = parseInt(e.target.value);
                 setTable([...table]);
             }}>
             </input>
@@ -101,14 +102,14 @@ export default function Row({table, setTable, i, unusedSpace}: Props) {
         </div>
 
         <div className="column">
-            <input type="text" name="size" value={`0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
+            <input type="text" name="size" value={displayHex ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
             </input>
             <div className="error">
-                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add 0x{unusedSpace.toString(16).toUpperCase()}</div>}
-                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract 0x{-unusedSpace.toString(16).toUpperCase()}</div>}
+                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {displayHex ? `${unusedSpace.toString()} kb` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {displayHex ? `${-unusedSpace.toString()} kb` : `0x${-unusedSpace.toString(16).toUpperCase()}`}</div>}
             </div>
             <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
         </div>

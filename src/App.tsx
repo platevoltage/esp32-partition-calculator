@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
-        <Table table={table} setTable={setTable} flashSize={flashSize*1024} />
+        <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayHex={displayHex}/>
         <br></br>
         <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
         <br></br>
