@@ -1,5 +1,7 @@
 import React from 'react'
 import { Partition } from './Row';
+import './UpDown.css';
+
 interface Props {
     table: Partition[];
     setTable: (data: Partition[]) => void;
