@@ -46,7 +46,9 @@ select {
 }
 
 .green-row {
-    transition: all .5s; 
+    transition-delay: .3s ;
+    transition-property: all; 
+    transition-duration: .5s;
     position: relative;
     background-color: #00ff0022
 }
