@@ -1,0 +1,24 @@
+.options {
+    border: 1px solid #30363d;
+    border-radius: 6px; 
+    margin-top: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.options-row {
+    /* border: 1px solid #30363d; */
+    margin: .5em;
+    display: flex;
+}
+
+.options-column {
+    border: 1px solid #30363d;
+    width: 50%;
+}
+
+.options select {
+    width: 100%;
+}

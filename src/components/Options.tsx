@@ -2,6 +2,7 @@ import React from 'react'
 import FlashSize from './FlashSize'
 import FileSelect from './FileSelect'
 import { Partition } from './Row'
+import "./Options.css"
 
 interface Props {
     flashSize: number;
@@ -13,17 +14,35 @@ interface Props {
 
 export default function Options({flashSize, setFlashSize, displayHex, setDisplayHex, setTable}: Props) {
   return (
-    <div>
-        <br></br>
-        <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
-        <br></br>
-        <FileSelect setTable={setTable} />
-        <br></br>
-        
-        <label htmlFor="hex">
-          <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
-          Decimal Values
-        </label> 
+    <div className="options">
+
+        <div className="options-row">
+            <div className="options-column">
+                <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
+            </div>
+            <div className="options-column">
+
+            </div>
+        </div>
+        <div className="options-row">
+            <div className="options-column">
+                <FileSelect setTable={setTable} />
+            </div>
+            <div className="options-column">
+                
+            </div>
+        </div>
+        <div className="options-row">
+            <div className="options-column">
+                <label htmlFor="hex">
+                <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
+                Decimal Values
+                </label> 
+            </div>
+            <div className="options-column">
+                    
+            </div>
+        </div>
     </div>
   )
 }
