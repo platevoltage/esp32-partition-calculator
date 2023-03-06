@@ -124,6 +124,7 @@ export default function Table({flashSize}: Props) {
                 }
                 const outputString = `# Name,\tType,\tSubType,\tOffset,\tSize,\tFlags \n ${Papa.unparse(_table, unparseConfig)}`
                 console.log( outputString );
+
             }}>Save</button>
 
 

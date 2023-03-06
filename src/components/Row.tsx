@@ -1,4 +1,5 @@
 import React from 'react'
+import UpDown from './UpDown';
 
 export interface Partition {
     name: string;
@@ -99,16 +100,7 @@ export default function Row({table, setTable, i}: Props) {
             }}>
 
             </input>
-            <div className="up-down">
-                <button onClick={() => {
-                    table[i].offset+= 4096;
-                    setTable([...table]);
-                }}><i className="bi bi-caret-up-fill"></i></button>
-                <button onClick={() => {
-                    table[i].offset-= 4096;
-                    setTable([...table]);
-                }}><i className="bi bi-caret-down-fill"></i></button>
-            </div>
+            <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
         </div>
 
         <div className="column">
@@ -117,16 +109,7 @@ export default function Row({table, setTable, i}: Props) {
                 setTable([...table]);
             }}>
             </input>
-            <div className="up-down">
-                <button onClick={() => {
-                    table[i].size+= 4096;
-                    setTable([...table]);
-                }}><i className="bi bi-caret-up-fill"></i></button>
-                <button onClick={() => {
-                    table[i].size-= 4096;
-                    setTable([...table]);
-                }}><i className="bi bi-caret-down-fill"></i></button>
-            </div>
+            <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
         </div>
 
         <div className="column">
