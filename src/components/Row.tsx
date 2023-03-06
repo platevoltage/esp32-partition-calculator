@@ -81,7 +81,7 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
-            <input type="text" name="offset" value={`0x${(table[i].offset || 0).toString(16)}`} onChange={(e) => {
+            <input type="text" name="offset" value={`0x${(table[i].offset || 0).toString(16).toUpperCase()}`} onChange={(e) => {
                 table[i].offset = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
@@ -91,7 +91,7 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
-            <input type="text" name="size" value={`0x${(table[i].size || 0).toString(16)}`} onChange={(e) => {
+            <input type="text" name="size" value={`0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
