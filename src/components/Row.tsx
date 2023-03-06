@@ -114,7 +114,7 @@ export default function Row({table, setTable, i, unusedSpace, displayHex}: Props
             <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
         </div>
 
-        <div className="column">
+        <div className="column end">
             <input type="text" name="flags" spellCheck="false" onChange={(e) => {
                 table[i].flags = e.target.value;
                 setTable([...table]);

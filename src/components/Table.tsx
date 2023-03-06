@@ -27,12 +27,12 @@ export default function Table({table, setTable, flashSize, displayHex}: Props) {
     return (
         <main>
             <header className="row header">
-                <div className="column">Name</div>
-                <div className="column">Type</div>
-                <div className="column">SubType</div>
-                <div className="column">Offset</div>
-                <div className="column">Size</div>
-                <div className="column">Flags</div>
+                <div className="column header">Name</div>
+                <div className="column header">Type</div>
+                <div className="column header">SubType</div>
+                <div className="column header">Offset</div>
+                <div className="column header">Size</div>
+                <div className="column header">Flags</div>
             </header>
             {
                 table.map((_, i) => {

@@ -48,7 +48,7 @@ select {
 }
 
 .row.bottom {
-    border-radius: 0px 0px 10px 10px; 
+    border-radius: 0px 0px 6px 6px; 
 }
 
 .green-row {
@@ -60,14 +60,14 @@ select {
     background-color: #00ff0022
 }
 .green-row.bottom {
-    border-radius: 10px 10px 10px 10px; 
+    border-radius: 6px 6px 6px 6px; 
 }
 
 
 
-.header {
+.row.header {
     background-color: #161b22;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
     padding-top: 1em;
     height: 2em;
     font-size: .8em;
@@ -79,12 +79,20 @@ select {
     position: relative;
     height: 100%;
     width: 100%;
-    border-right: 1px solid #30363d;
+    border-right: .5px solid #30363d;
     display: flex;
     flex-direction: row;
     justify-content: center;
     /* display: inline-block; */
     /* background-color: #5d4d4d; */
+}
+
+.column.end {
+    border: none;
+}
+
+.column.header {
+    border: none;
 }
 
 .column .error {
