@@ -23,10 +23,14 @@ interface Props {
 export default function Row({table, setTable, i, unusedSpace}: Props) {
 
     const [red, setRed] = useState<boolean>(false);
+    const [green, setGreen] = useState<boolean>(false);
 
   return (
+    <>
+    <div className="green-row" style={{height: `${green ? "1em" : "0em"}`}}>
+        <AddRow table={table} setTable={setTable} i={i} setGreen={setGreen}/>
+    </div>
     <div className={`row ${i===table.length-1 && "bottom"}`} style={{backgroundColor: `${red ? "#ff000022" : "inherit"}`}}>
-        <AddRow table={table} setTable={setTable} i={i}/>
         <DeleteRow table={table} setTable={setTable} i={i} setRed={setRed}/>
 
         <div className="column">
@@ -116,5 +120,6 @@ export default function Row({table, setTable, i, unusedSpace}: Props) {
         </div>
 
     </div>
+    </>
   )
 }

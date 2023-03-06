@@ -28,7 +28,7 @@ select {
 
 .row {
     transition: all 1s;
-    height: 50px;
+    height: 3em;
     width: 100%;
     margin-top: -1px;
     margin-left: -1px;
@@ -43,6 +43,12 @@ select {
 
 .row .red {
     background-color: #ff0000;
+}
+
+.green-row {
+    transition: all .5s; 
+    position: relative;
+    background-color: #00ff0022
 }
 
 .header {
