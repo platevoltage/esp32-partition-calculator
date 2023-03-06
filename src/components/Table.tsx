@@ -44,7 +44,7 @@ export default function Table({table, setTable, flashSize}: Props) {
                 <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen}/>
             </div>
 
-            <button className="save" onClick={() => {
+            {/* <button className="save" onClick={() => {
                 const _table = [];
                 for (let row of table) {
                     _table.push({
@@ -57,7 +57,7 @@ export default function Table({table, setTable, flashSize}: Props) {
                     })
                 }
 
-            }}>Save</button>
+            }}>Save</button> */}
 
 
 

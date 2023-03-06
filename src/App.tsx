@@ -20,15 +20,23 @@ async function getCSV() {
 function App() {
   const [flashSize, setFlashSize] = useState<number>(4096);
   const [table, setTable] = useState<Partition[]>([]);
+  const [displayHex, setDisplayHex] = useState<boolean>(true);
 
 
   return (
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
+        <Table table={table} setTable={setTable} flashSize={flashSize*1024} />
+        <br></br>
         <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
         <br></br>
-        <Table table={table} setTable={setTable} flashSize={flashSize*1024} />
         <FileSelect setTable={setTable} />
+        <br></br>
+        
+        <label htmlFor="hex">
+          <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
+          Decimal Values
+        </label> 
       </div>
     </div>
   );
