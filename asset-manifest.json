@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.6a591eb3.css",
-    "main.js": "/static/js/main.f5bb57c1.js",
-    "static/js/787.8975e6e2.chunk.js": "/static/js/787.8975e6e2.chunk.js",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
-    "index.html": "/index.html",
-    "main.6a591eb3.css.map": "/static/css/main.6a591eb3.css.map",
-    "main.f5bb57c1.js.map": "/static/js/main.f5bb57c1.js.map",
-    "787.8975e6e2.chunk.js.map": "/static/js/787.8975e6e2.chunk.js.map"
+    "main.css": "/esp32-partition-calculator/static/css/main.b5f1b062.css",
+    "main.js": "/esp32-partition-calculator/static/js/main.3b6658bd.js",
+    "static/js/787.8975e6e2.chunk.js": "/esp32-partition-calculator/static/js/787.8975e6e2.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/esp32-partition-calculator/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
+    "static/media/bootstrap-icons.woff2?": "/esp32-partition-calculator/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
+    "index.html": "/esp32-partition-calculator/index.html",
+    "main.b5f1b062.css.map": "/esp32-partition-calculator/static/css/main.b5f1b062.css.map",
+    "main.3b6658bd.js.map": "/esp32-partition-calculator/static/js/main.3b6658bd.js.map",
+    "787.8975e6e2.chunk.js.map": "/esp32-partition-calculator/static/js/787.8975e6e2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a591eb3.css",
-    "static/js/main.f5bb57c1.js"
+    "static/css/main.b5f1b062.css",
+    "static/js/main.3b6658bd.js"
   ]
 }
