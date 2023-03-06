@@ -16,10 +16,11 @@ interface Props {
     table: Partition[];
     setTable: (data: Partition[]) => void;
     i: number;
+    unusedSpace: number;
 }
 
 
-export default function Row({table, setTable, i}: Props) {
+export default function Row({table, setTable, i, unusedSpace}: Props) {
 
   return (
     <div className={`row ${i===table.length-1 && "bottom"}`}>
@@ -81,12 +82,17 @@ export default function Row({table, setTable, i}: Props) {
         </div>
 
         <div className="column">
+
             <input type="text" name="offset" value={`0x${(table[i].offset || 0).toString(16).toUpperCase()}`} onChange={(e) => {
                 table[i].offset = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>
-
             </input>
+            {/* <div className="error">
+                {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {unusedSpace}</div>}
+                {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {unusedSpace}</div>}
+            </div> */}
+
             <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
         </div>
 
@@ -96,6 +102,10 @@ export default function Row({table, setTable, i}: Props) {
                 setTable([...table]);
             }}>
             </input>
+            <div className="error">
+                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add 0x{unusedSpace.toString(16).toUpperCase()}</div>}
+                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract 0x{-unusedSpace.toString(16).toUpperCase()}</div>}
+            </div>
             <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
         </div>
 
@@ -106,7 +116,6 @@ export default function Row({table, setTable, i}: Props) {
             }}>
 
             </input>
-            {table[i].flags}
         </div>
 
     </div>

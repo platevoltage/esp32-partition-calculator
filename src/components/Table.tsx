@@ -74,16 +74,9 @@ export default function Table({flashSize}: Props) {
         }
         
         const unusedSpace: number = partitionSize - nextOffset;
-        return unusedSpace;
+        return -unusedSpace;
     }
 
-    const blankPartition: Partition = {
-        name: "",
-        type: "app",
-        subType: "factory",
-        offset: table.length>0 ? table[table.length-1].offset+table[table.length-1].size : 0,
-        size: 0,
-    }
 
     return (
         <main>
@@ -97,12 +90,12 @@ export default function Table({flashSize}: Props) {
             </header>
             {
                 table.map((_, i) => {
-                    const unusedSpace = getUnusedSpace(i);
+                    // const unusedSpace = getUnusedSpace(i);
                     return (<div key={i}>
-                        <Row table={table} setTable={setTable} i={i} />
-                        <div style={{display: "flex", justifyContent: "flex-end"}}>
+                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)}/>
+                        {/* <div style={{display: "flex", justifyContent: "flex-end"}}>
                             {( unusedSpace !== 0 ) && <><div className="mismatch" style={{backgroundColor: `${unusedSpace>0 ? "#ff9999" : "#ffffff"}`}}>{-unusedSpace} bytes</div></>}
-                        </div>
+                        </div> */}
                     </div>)
                 })
             }
