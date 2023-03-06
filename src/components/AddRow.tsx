@@ -16,6 +16,7 @@ export default function AddRow({table, setTable, i, setGreen}: Props) {
         subType: "factory",
         offset: table[i-1]?.offset+table[i-1]?.size || 36864,
         size: 0,
+        flags: ""
     }
     return (
         <button className={`add`} onClick={() => {

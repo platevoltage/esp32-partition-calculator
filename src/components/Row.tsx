@@ -9,7 +9,7 @@ export interface Partition {
     subType: string;
     offset: number;
     size: number;
-    flags?: string;
+    flags: string;
 }
 
 interface Props {
@@ -119,7 +119,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec}: Props
         </div>
 
         <div className="column end">
-            <input type="text" name="flags" spellCheck="false" onChange={(e) => {
+            <input type="text" name="flags" value={table[i].flags} spellCheck="false" onChange={(e) => {
                 table[i].flags = e.target.value;
                 setTable([...table]);
             }}>
