@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import UpDown from './UpDown';
 import AddRow from './AddRow';
 import DeleteRow from './DeleteRow';
@@ -22,10 +22,12 @@ interface Props {
 
 export default function Row({table, setTable, i, unusedSpace}: Props) {
 
+    const [red, setRed] = useState<boolean>(false);
+
   return (
-    <div className={`row ${i===table.length-1 && "bottom"}`}>
+    <div className={`row ${i===table.length-1 && "bottom"}`} style={{backgroundColor: `${red ? "#ff000022" : "inherit"}`}}>
         <AddRow table={table} setTable={setTable} i={i}/>
-        <DeleteRow table={table} setTable={setTable} i={i}/>
+        <DeleteRow table={table} setTable={setTable} i={i} setRed={setRed}/>
 
         <div className="column">
             <input type="text" name="name" value={table[i].name} spellCheck="false" onChange={(e) => {
@@ -88,11 +90,6 @@ export default function Row({table, setTable, i, unusedSpace}: Props) {
                 setTable([...table]);
             }}>
             </input>
-            {/* <div className="error">
-                {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {unusedSpace}</div>}
-                {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {unusedSpace}</div>}
-            </div> */}
-
             <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
         </div>
 

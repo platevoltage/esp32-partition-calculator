@@ -27,6 +27,7 @@ select {
 }
 
 .row {
+    transition: all 1s;
     height: 50px;
     width: 100%;
     margin-top: -1px;
@@ -38,6 +39,10 @@ select {
     display: flex;
     /* background-color: #3c3c3c00; */
     color: #ffffff;
+}
+
+.row .red {
+    background-color: #ff0000;
 }
 
 .header {

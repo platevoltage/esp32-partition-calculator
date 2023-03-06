@@ -7,13 +7,20 @@ interface Props {
     setTable: (data: Partition[]) => void;
     i: number;
     bottom?: boolean;
+    setRed: (red: boolean) => void;
 }
 
-export default function DeleteRow({table, setTable, i, bottom}: Props) {
+export default function DeleteRow({table, setTable, i, bottom, setRed}: Props) {
   return (
     <button className="remove" onClick={() => {
         table.splice( i, 1);
         setTable( [ ...table ] );
-    }}><i className="bi bi-scissors"></i></button>
+    }} onMouseEnter={() => {
+      setRed(true);
+    }} onMouseLeave={() => {
+      setRed(false);
+    }}>
+      <i className="bi bi-scissors"></i>
+    </button>
   )
 }

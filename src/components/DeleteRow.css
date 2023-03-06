@@ -7,3 +7,7 @@
     color: inherit;
     border-radius: 2px
 }
+
+.remove:hover {
+    background-color: #922f2f;
+}
