@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/esp32-partition-calculator/static/css/main.b5f1b062.css",
-    "main.js": "/esp32-partition-calculator/static/js/main.14034aba.js",
+    "main.css": "/esp32-partition-calculator/static/css/main.388551f9.css",
+    "main.js": "/esp32-partition-calculator/static/js/main.633df901.js",
     "static/js/787.8975e6e2.chunk.js": "/esp32-partition-calculator/static/js/787.8975e6e2.chunk.js",
     "static/media/bootstrap-icons.woff?": "/esp32-partition-calculator/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
     "static/media/bootstrap-icons.woff2?": "/esp32-partition-calculator/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
     "index.html": "/esp32-partition-calculator/index.html",
-    "main.b5f1b062.css.map": "/esp32-partition-calculator/static/css/main.b5f1b062.css.map",
-    "main.14034aba.js.map": "/esp32-partition-calculator/static/js/main.14034aba.js.map",
+    "main.388551f9.css.map": "/esp32-partition-calculator/static/css/main.388551f9.css.map",
+    "main.633df901.js.map": "/esp32-partition-calculator/static/js/main.633df901.js.map",
     "787.8975e6e2.chunk.js.map": "/esp32-partition-calculator/static/js/787.8975e6e2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5f1b062.css",
-    "static/js/main.14034aba.js"
+    "static/css/main.388551f9.css",
+    "static/js/main.633df901.js"
   ]
 }
