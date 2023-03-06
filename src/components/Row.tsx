@@ -98,7 +98,9 @@ export default function Row({table, setTable, i, unusedSpace, displayHex}: Props
                 setTable([...table]);
             }}>
             </input>
-            <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
+            </div>
         </div>
 
         <div className="column">
@@ -111,7 +113,9 @@ export default function Row({table, setTable, i, unusedSpace, displayHex}: Props
                     {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {displayHex ? `${unusedSpace.toString()} kb` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
                     {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {displayHex ? `${-unusedSpace.toString()} kb` : `0x${-unusedSpace.toString(16).toUpperCase()}`}</div>}
             </div>
-            <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
+            </div>
         </div>
 
         <div className="column end">

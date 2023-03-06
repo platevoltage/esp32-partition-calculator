@@ -20,10 +20,15 @@ export default function Options({flashSize, setFlashSize, displayHex, setDisplay
             <div className="options-column">
                 <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
             </div>
-            <div className="options-column">
 
+            <div className="options-column">
+                <label htmlFor="hex">
+                <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
+                Decimal Values
+                </label> 
             </div>
         </div>
+
         <div className="options-row">
             <div className="options-column">
                 <FileSelect setTable={setTable} />
@@ -32,17 +37,7 @@ export default function Options({flashSize, setFlashSize, displayHex, setDisplay
                 
             </div>
         </div>
-        <div className="options-row">
-            <div className="options-column">
-                <label htmlFor="hex">
-                <input type="checkbox" name="hex" checked={displayHex} onChange={() => setDisplayHex(!displayHex)} />
-                Decimal Values
-                </label> 
-            </div>
-            <div className="options-column">
-                    
-            </div>
-        </div>
+
     </div>
   )
 }

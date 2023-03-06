@@ -8,11 +8,13 @@ interface Props {
 
 export default function FlashSize({flashSize, setFlashSize}: Props) {
   return (
-    <div>
-        <label htmlFor="flashSize"  style={{width: "10em"}}>Flash Size: 
-            <input name="flash-size" type="text" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
+    <div className="input">
+        <label htmlFor="flashSize">Flash Size:
         </label>
-        {/* <UpDown table={table} setTable={setTable} i={i} param={"offset"}/> */}
+
+        <input name="flash-size" type="text" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
+        
+        <UpDown param="flash-size" getter={flashSize} setter={setFlashSize} />
     </div>
   )
 }
