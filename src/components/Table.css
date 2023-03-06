@@ -41,17 +41,27 @@ select {
     color: #ffffff;
 }
 
-.row .red {
+.row.red {
     background-color: #ff0000;
 }
 
+.row.bottom {
+    border-radius: 0px 0px 10px 10px; 
+}
+
 .green-row {
+    position: relative;
     transition-delay: .3s ;
     transition-property: all; 
     transition-duration: .5s;
     position: relative;
     background-color: #00ff0022
 }
+.green-row.bottom {
+    border-radius: 10px 10px 10px 10px; 
+}
+
+
 
 .header {
     background-color: #161b22;
@@ -61,9 +71,6 @@ select {
     font-size: .8em;
 }
 
-.bottom {
-    border-radius: 0px 0px 10px 10px; 
-}
 
 
 .column {

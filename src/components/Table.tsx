@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Table({table, setTable, flashSize}: Props) {
-
+    const [green, setGreen] = useState<boolean>(false);
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
         let nextOffset = table[i+1]?.offset;
@@ -35,16 +35,14 @@ export default function Table({table, setTable, flashSize}: Props) {
             </header>
             {
                 table.map((_, i) => {
-                    // const unusedSpace = getUnusedSpace(i);
                     return (<div key={i}>
                         <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)}/>
-                        {/* <div style={{display: "flex", justifyContent: "flex-end"}}>
-                            {( unusedSpace !== 0 ) && <><div className="mismatch" style={{backgroundColor: `${unusedSpace>0 ? "#ff9999" : "#ffffff"}`}}>{-unusedSpace} bytes</div></>}
-                        </div> */}
                     </div>)
                 })
             }
-            <AddRow table={table} setTable={setTable} i={table.length}/>
+            <div className="green-row bottom" style={{height: `${green ? "1em" : "0em"}`}}>
+                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen}/>
+            </div>
 
             <button className="save" onClick={() => {
                 const _table = [];
@@ -58,8 +56,6 @@ export default function Table({table, setTable, flashSize}: Props) {
                         flags:  row.flags,
                     })
                 }
-                // const outputString = `# Name,\tType,\tSubType,\tOffset,\tSize,\tFlags \n ${Papa.unparse(_table, unparseConfig)}`
-                // console.log( outputString );
 
             }}>Save</button>
 

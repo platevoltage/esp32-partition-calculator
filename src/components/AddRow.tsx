@@ -6,11 +6,10 @@ interface Props {
     table: Partition[];
     setTable: (data: Partition[]) => void;
     i: number;
-    bottom?: boolean;
     setGreen?: (green: boolean) => void;
 }
 
-export default function AddRow({table, setTable, i, bottom, setGreen}: Props) {
+export default function AddRow({table, setTable, i, setGreen}: Props) {
     const blankPartition: Partition = {
         name: "",
         type: "app",
@@ -19,7 +18,7 @@ export default function AddRow({table, setTable, i, bottom, setGreen}: Props) {
         size: 0,
     }
     return (
-        <button className={`add ${i === table.length && "add-bottom"}`} onClick={() => {
+        <button className={`add`} onClick={() => {
             table.splice( i, 0, blankPartition );
             setTable( [ ...table ] );
         }} onMouseEnter={() => {
