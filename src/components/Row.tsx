@@ -1,6 +1,7 @@
 import React from 'react'
 import UpDown from './UpDown';
 import AddRow from './AddRow';
+import DeleteRow from './DeleteRow';
 
 export interface Partition {
     name: string;
@@ -22,18 +23,8 @@ export default function Row({table, setTable, i}: Props) {
 
   return (
     <div className={`row ${i===table.length-1 && "bottom"}`}>
-
-        {/* <button className="add" onClick={() => {
-            table.splice( i, 0, blankPartition );
-            setTable( [ ...table ] );
-        }}><i className="bi bi-arrow-right"></i></button> */}
         <AddRow table={table} setTable={setTable} i={i}/>
-
-        <button className="remove" onClick={() => {
-            table.splice( i, 1);
-            setTable( [ ...table ] );
-        }}><i className="bi bi-scissors"></i></button>
-
+        <DeleteRow table={table} setTable={setTable} i={i}/>
 
         <div className="column">
             <input type="text" name="name" value={table[i].name} spellCheck="false" onChange={(e) => {
