@@ -6,22 +6,19 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import FlashSize from './components/FlashSize';
 import Options from './components/Options';
 import {Partition} from './components/Row';
-import Papa from 'papaparse';
 
-async function getCSV() {
-  const fileName = "huge_app.csv";
-  const res = await fetch(`${process.env.PUBLIC_URL}/tables/${fileName}`);
-  if (!res.ok) {
-    throw res;
-  }
-  return res.text();
-}
 
 
 function App() {
   const [flashSize, setFlashSize] = useState<number>(4096);
   const [table, setTable] = useState<Partition[]>([]);
   const [displayHex, setDisplayHex] = useState<boolean>(true);
+
+  useEffect(() => { //update local storage
+    if (table.length > 0) {
+      window.localStorage.setItem("currentTable", JSON.stringify(table));
+    }
+  },[table]);
 
 
   return (

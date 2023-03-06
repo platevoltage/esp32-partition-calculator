@@ -15,7 +15,7 @@ async function getCSV(fileName: string) {
       throw res;
     }
     return (await res.text()).trim();
-  }
+}
 
 export default function FileSelect({setTable}: Props) {
     const parseConfig: Papa.ParseConfig = {
@@ -58,12 +58,16 @@ export default function FileSelect({setTable}: Props) {
         skipEmptyLines: false, //other option is 'greedy', meaning skip delimiters, quotes, and whitespace.
         // columns: null //or array of strings
     }
-
-    useEffect(() => {
-
-        (async () => Papa.parse(await getCSV("default.csv"), parseConfig))();
-
-    },[]);
+    useEffect(() => { //load local storage or use defaults
+        (async () => {
+            let _tableString = window.localStorage.getItem("currentTable");
+            if (!_tableString) {
+                Papa.parse(await getCSV("default.csv"), parseConfig);
+            }
+            else setTable(JSON.parse(_tableString));
+        })();
+            
+      },[]);
 
     return (
         <div className="select">
