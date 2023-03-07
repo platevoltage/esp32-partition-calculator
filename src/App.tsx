@@ -27,7 +27,7 @@ function App() {
         <h1>ESP32 Partition Calculator</h1>
         <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayDec={displayDec}/>
         
-        <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} setTable={setTable}/>
+        <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} table={table} setTable={setTable}/>
 
         <div className="footer">
           <span>Written by Garrett Corbin // </span>

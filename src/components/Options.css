@@ -2,22 +2,22 @@
     border: 1px solid #30363d;
     border-radius: 6px; 
     margin-top: 2em;
-    padding: 1em 1em 1em 0em;
+    padding: 1em 1em 2em 2em;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
 .options-row {
-    border: 1px solid #30363d22;
+    /* border: 1px solid #30363d22; */
     margin: .2em;
     display: flex;
 }
 
 .options-column {
-    border: 1px solid #30363d22;
+    /* border: 1px solid #30363d22; */
     width: 50%;
-    padding-left: 1em;
+    /* padding-left: 1em; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,8 @@ input[type="file"] {
     border: 2px solid #30363d;
     background-color: #161b22;
     border-radius: 6px; 
-    /* display: inline-block; */
+
     padding: .5em 1em;
     cursor: pointer;
+    
 }
