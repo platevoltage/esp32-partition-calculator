@@ -48,7 +48,7 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
         const blob = new Blob([csv], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.download = "partition.csv";
+        link.download = "partitions.csv";
         link.href = url;
         link.click();
         URL.revokeObjectURL(url);
@@ -83,7 +83,6 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
 
         <div className="options-row">
             <div className="options-column">
-                {/* <button>Load from file</button> */}
             </div>
 
         </div>

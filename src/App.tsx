@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Table from './components/Table';
-import FileSelect from './components/FileSelect';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import FlashSize from './components/FlashSize';
 import Options from './components/Options';
 import {Partition} from './components/Row';
 
