@@ -50,16 +50,16 @@ export default function FileSelect({setTable}: Props) {
                 setTable(_table);
             }
         }
-    const unparseConfig: Papa.UnparseConfig = {
-        quotes: false, //or array of booleans
-        quoteChar: '"',
-        escapeChar: '"',
-        delimiter: ",\t",
-        header: false,
-        newline: "\n",
-        skipEmptyLines: false, //other option is 'greedy', meaning skip delimiters, quotes, and whitespace.
-        // columns: null //or array of strings
-    }
+    // const unparseConfig: Papa.UnparseConfig = {
+    //     quotes: false, //or array of booleans
+    //     quoteChar: '"',
+    //     escapeChar: '"',
+    //     delimiter: ",\t",
+    //     header: false,
+    //     newline: "\n",
+    //     skipEmptyLines: false, //other option is 'greedy', meaning skip delimiters, quotes, and whitespace.
+    //     // columns: null //or array of strings
+    // }
     useEffect(() => { //load local storage or use defaults
         (async () => {
             let _tableString = window.localStorage.getItem("currentTable");
