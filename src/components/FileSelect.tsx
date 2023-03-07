@@ -114,7 +114,11 @@ export default function FileSelect({setTable}: Props) {
                 <option value="rainmaker.csv">RainMaker</option> 
             </select>
             {/* <input type="file">upload</input> */}
-            <input type="file" id="csvupload" name="csvupload" accept="text/csv" onChange={handleLoad}></input>
+                <br></br>
+                <br></br>
+            <label className="file-upload">
+            <input type="file" id="csvupload" name="csvupload" accept="text/csv" onChange={handleLoad}></input>Upload csv
+            </label>
         </div>
     )
 }

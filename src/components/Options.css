@@ -28,7 +28,7 @@
     background-color: #161b22;
     border-radius: 6px; 
     padding: .5em;
-    width: 18em;
+    width: 17em;
 
 }
 
@@ -84,4 +84,17 @@ input::-webkit-inner-spin-button {
 
 .checkbox {
     margin: 1em;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+    border: 2px solid #30363d;
+    background-color: #161b22;
+    border-radius: 6px; 
+    /* display: inline-block; */
+    padding: .5em 1em;
+    cursor: pointer;
 }
