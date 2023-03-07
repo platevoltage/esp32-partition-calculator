@@ -34,7 +34,9 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
                 <FileSelect setTable={setTable} />
             </div>
             <div className="options-column">
-                
+                <div className="options-column">
+                    <button className="button"> Save </button>
+                </div>
             </div>
         </div>
 
@@ -42,9 +44,7 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
             <div className="options-column">
                 {/* <button>Load from file</button> */}
             </div>
-            <div className="options-column">
-                
-            </div>
+
         </div>
 
     </div>

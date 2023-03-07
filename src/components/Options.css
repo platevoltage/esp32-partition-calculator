@@ -84,13 +84,17 @@ input::-webkit-inner-spin-button {
 
 .checkbox {
     margin: 1em;
+
+
 }
 
 input[type="file"] {
     display: none;
 }
 
-.file-upload {
+.file-upload, .options .button {
+    color: inherit;
+    font-size: inherit;
     border: 2px solid #30363d;
     background-color: #161b22;
     border-radius: 6px; 
