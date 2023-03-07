@@ -81,3 +81,7 @@ input::-webkit-inner-spin-button {
     
     /* width: 5em; */
 }
+
+.checkbox {
+    margin: 1em;
+}

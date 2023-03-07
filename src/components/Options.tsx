@@ -23,8 +23,8 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
 
             <div className="options-column">
                 <label htmlFor="hex">
-                <input type="checkbox" name="hex" checked={!displayDec} onChange={() => setDisplayDec(!displayDec)} />
-                Decimal Values
+                Show Decimal Values (bytes):
+                <input className="checkbox" type="checkbox" name="hex" checked={!displayDec} onChange={() => setDisplayDec(!displayDec)} />
                 </label> 
             </div>
         </div>
