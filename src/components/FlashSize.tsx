@@ -13,6 +13,8 @@ export default function FlashSize({flashSize, setFlashSize}: Props) {
         </label>
 
         <input name="flash-size" type="number" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
+        <div style={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', marginRight: '1em'}}>k</div>
+        <div className="megabyte">{flashSize/1024}M</div>
         
         <UpDown param="flash-size" getter={flashSize} setter={setFlashSize} />
     </div>

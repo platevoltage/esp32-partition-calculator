@@ -31,6 +31,7 @@
 }
 
 .options .input {
+    position: relative;
     /* border: 2px solid #30363d; */
     /* background-color: #161b22; */
     padding: .5em;
@@ -46,12 +47,18 @@
     font-size: 1em;
     color: #ffffff;
     width: 5em;
-    margin-right: 1em;
+    /* margin-right: 1em; */
     text-align: right;
     /* appearance: none;
     margin: 0; */
+}
 
-
+.megabyte {
+    position: absolute;
+    bottom: .3em;
+    right: 5em;
+    font-size: .7em;
+    color: #aaaaaa;
 }
 
 input::-webkit-outer-spin-button,
@@ -65,5 +72,6 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     /* width: 5em; */
 }
