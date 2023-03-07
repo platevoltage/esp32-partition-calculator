@@ -18,7 +18,8 @@ export default function AddRow({table, setTable, i, setGreen}: Props) {
         size: 0,
         flags: ""
     }
-    return (
+    return (<>
+        <div className="arrow"></div>
         <button className={`add`} onClick={() => {
             table.splice( i, 0, blankPartition );
             setTable( [ ...table ] );
@@ -27,5 +28,5 @@ export default function AddRow({table, setTable, i, setGreen}: Props) {
         }} onMouseLeave={() => {
             if (setGreen) setGreen(false);
         }}><i className="bi bi-arrow-right"></i></button>
-    )
+    </>)
 }

@@ -12,6 +12,7 @@ interface Props {
 
 export default function DeleteRow({table, setTable, i, bottom, setRed}: Props) {
   return (
+ 
     <button className="remove" onClick={() => {
         table.splice( i, 1);
         setTable( [ ...table ] );
@@ -22,5 +23,6 @@ export default function DeleteRow({table, setTable, i, bottom, setRed}: Props) {
     }}>
       <i className="bi bi-scissors"></i>
     </button>
+
   )
 }

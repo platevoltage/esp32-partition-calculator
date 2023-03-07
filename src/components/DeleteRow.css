@@ -1,7 +1,7 @@
 .remove {
     border: 0;
     position: absolute;
-    left: -26px;
+    left: -3em;
     top: calc(50% - 1em);
     background-color: #9b1717;
     color: inherit;

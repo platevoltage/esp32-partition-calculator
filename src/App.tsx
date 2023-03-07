@@ -30,7 +30,7 @@ function App() {
         <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} table={table} setTable={setTable}/>
 
         <div className="footer">
-          <span>Written by Garrett Corbin // </span>
+          <span>Written by Garrett Corbin &nbsp; x &nbsp; </span>
           <a href="https://jgarrettcorbin.com" target="_blank" rel="noreferrer">https://jgarrettcorbin.com</a>
 
         </div>
