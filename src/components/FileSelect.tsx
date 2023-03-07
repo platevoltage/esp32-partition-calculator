@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import Papa from 'papaparse';
 import {Partition} from './Row';
+import { InputFiles } from 'typescript';
 
 interface Props {
     // table: Partition[];
@@ -34,6 +35,7 @@ export default function FileSelect({setTable}: Props) {
         transform: undefined,
         delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP],
         complete: (result: Papa.ParseResult<string>) => {
+        
                 const _table: Partition[] = [];
                 for (let partition of result.data) {
                     _table.push({
@@ -69,6 +71,21 @@ export default function FileSelect({setTable}: Props) {
             
       },[]);
 
+    function handleLoad(e: ChangeEvent<HTMLInputElement>) {
+        
+        let fileList = e.target.files || [];
+        if (fileList.length > 0) {
+            console.log(fileList[0]);
+            const reader = new FileReader();
+            reader.readAsText(fileList[0]);
+            reader.onload = async function(e) {
+                const csv = reader.result as string;
+                Papa.parse(csv, parseConfig);
+            };
+        }
+
+    }
+
     return (
         <div className="select">
             <select name="presets" value="none" onChange={(e) => {
@@ -94,10 +111,10 @@ export default function FileSelect({setTable}: Props) {
                 {/* <option value="large_spiffs_16MB.csv">large_spiffs_16MB</option> */}
                 <option value="default_16MB.csv">16M Flash (2MB APP/12.5MB FATFS)</option>
                 <option value="app3M_fat9M_16MB.csv">16M Flash (3MB APP/9.9MB FATFS)</option>
-                <option value="rainmaker.csv">RainMaker</option>
-
-                
+                <option value="rainmaker.csv">RainMaker</option> 
             </select>
+            {/* <input type="file">upload</input> */}
+            <input type="file" id="csvupload" name="csvupload" accept="text/csv" onChange={handleLoad}></input>
         </div>
     )
 }
