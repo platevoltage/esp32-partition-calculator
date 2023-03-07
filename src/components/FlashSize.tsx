@@ -12,7 +12,7 @@ export default function FlashSize({flashSize, setFlashSize}: Props) {
         <label htmlFor="flashSize">Flash Size:
         </label>
 
-        <input name="flash-size" type="text" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
+        <input name="flash-size" type="number" value={flashSize} onChange={(e) =>  setFlashSize(+e.target.value) }></input>
         
         <UpDown param="flash-size" getter={flashSize} setter={setFlashSize} />
     </div>

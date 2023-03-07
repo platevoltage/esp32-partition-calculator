@@ -9,13 +9,13 @@
 }
 
 .options-row {
-    /* border: 1px solid #30363d22; */
+    border: 1px solid #30363d22;
     margin: .2em;
     display: flex;
 }
 
 .options-column {
-    /* border: 1px solid #30363d22; */
+    border: 1px solid #30363d22;
     width: 50%;
     padding-left: 1em;
     display: flex;
@@ -42,10 +42,22 @@
 
 .options .input input {
     background-color: #00000000;
+    /* border: 1px solid #30363d22; */
     font-size: 1em;
     color: #ffffff;
     width: 5em;
-    margin-left: 1em;
+    margin-right: 1em;
+    text-align: right;
+    /* appearance: none;
+    margin: 0; */
+
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .options .input label {

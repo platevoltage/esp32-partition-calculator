@@ -14,8 +14,16 @@ main {
     color: inherit;
     border: none;
     font-size: 1em;
-    width: 70%;
+    width: 60%;
+    /* min-width: 8em; */
+    
 }
+
+.number input {
+    text-align: right;
+    margin-right: 1em;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
