@@ -1,11 +1,9 @@
 /* @license
 Papa Parse
-v5.4.0
+v5.4.1
 https://github.com/mholt/PapaParse
 License: MIT
 */
-
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
  * @license React
