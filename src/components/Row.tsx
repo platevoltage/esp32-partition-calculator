@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import UpDown from './UpDown';
 import AddRow from './AddRow';
 import DeleteRow from './DeleteRow';
@@ -25,6 +25,12 @@ export default function Row({table, setTable, i, unusedSpace, displayDec}: Props
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
+
+    useEffect(() => {
+        console.log(
+            (-unusedSpace).toString(16).toUpperCase()
+        );
+    },[unusedSpace]);
 
   return (
     <>
@@ -111,7 +117,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec}: Props
             </input>
             <div className="error">
                     {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {!displayDec ? `${unusedSpace.toString()} kb` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
-                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {!displayDec ? `${-unusedSpace.toString()} kb` : `0x${-unusedSpace.toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {!displayDec ? `${-unusedSpace.toString()} kb` : `0x${(-unusedSpace).toString(16).toUpperCase()}`}</div>}
             </div>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
