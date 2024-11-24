@@ -8,19 +8,38 @@ interface Props {
     setTable: (table: Partition[]) => void;
     flashSize: number;
     displayDec: boolean;
+    rowCount: number;
+    setRowCount: (rowCount: number) => void;
 }
 
-export default function Table({table, setTable, flashSize, displayDec}: Props) {
+export default function Table({table, setTable, flashSize, displayDec, rowCount, setRowCount}: Props) {
     const [green, setGreen] = useState<boolean>(false);
+    const [displayTable, setDisplayTable] = useState<any[]>([]);
+
+    useEffect(() => {
+        setDisplayTable(table);
+    }, [table]);
+
+    // useEffect(() => {
+    //     if (displayTable.length === 0) {
+    //         setDisplayTable(table);
+    //     } else {
+    //         // setDisplayTable([]);
+    //     }
+    // }, [displayTable]);
+
     function getUnusedSpace(i: number) {
-        const partitionSize = table[i].offset + table[i].size;
-        let nextOffset = table[i+1]?.offset;
-        if (isNaN(nextOffset)) {
-            nextOffset = flashSize;
-        }
-        
-        const unusedSpace: number = -(partitionSize - nextOffset);
-        return unusedSpace;
+
+
+            const partitionSize = table[i]?.offset + table[i]?.size;
+            let nextOffset = table[i+1]?.offset;
+            if (isNaN(nextOffset)) {
+                nextOffset = flashSize;
+            }
+            
+            const unusedSpace: number = -(partitionSize - nextOffset);
+            return unusedSpace;
+
     }
 
 
@@ -35,14 +54,14 @@ export default function Table({table, setTable, flashSize, displayDec}: Props) {
                 <div className="column header">Flags</div>
             </header>
             {
-                table.map((_, i) => {
-                    return (<div key={i}>
-                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayDec={displayDec}/>
+                displayTable.map((_, i) => {
+                    return (<div key={table[i]?.key}>
+                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayDec={displayDec} rowCount={rowCount} setRowCount={setRowCount}/>
                     </div>)
                 })
             }
             <div className="green-row bottom" style={{height: `${green ? ".5em" : "0em"}`}}>
-                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} />
+                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} rowCount={rowCount} setRowCount={setRowCount}/>
             </div>
         </main>
     )

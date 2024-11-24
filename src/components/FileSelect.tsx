@@ -7,6 +7,8 @@ interface Props {
     // table: Partition[];
     setTable: (table: Partition[]) => void;
     // flashSize: number;
+    rowCount: number;
+    setRowCount: (rowCount: number) => void;
 }
 
 async function getCSV(fileName: string) {
@@ -18,7 +20,7 @@ async function getCSV(fileName: string) {
     return (await res.text()).trim();
 }
 
-export default function FileSelect({setTable}: Props) {
+export default function FileSelect({setTable, rowCount, setRowCount}: Props) {
     const parseConfig: Papa.ParseConfig = {
         delimiter: "",	// auto-detect
         quoteChar: '"',
@@ -37,6 +39,7 @@ export default function FileSelect({setTable}: Props) {
         complete: (result: Papa.ParseResult<string>) => {
         
                 const _table: Partition[] = [];
+                let count = rowCount;
                 for (let partition of result.data) {
                     _table.push({
                         name: partition[0].trim(), 
@@ -44,9 +47,12 @@ export default function FileSelect({setTable}: Props) {
                         subType: partition[2].trim(), 
                         offset: parseInt(partition[3], 16), 
                         size: parseInt(partition[4], 16),
-                        flags: partition[5].trim()
+                        flags: partition[5].trim(),
+                        key: count
                     });
+                    count++;
                 }
+                setRowCount(count);
                 setTable(_table);
             }
         }

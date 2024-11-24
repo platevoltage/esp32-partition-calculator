@@ -12,6 +12,8 @@ interface Props {
     setDisplayDec: (value: boolean) => void;
     table: Partition[];
     setTable: (value: Partition[]) => void;
+    rowCount: number;
+    setRowCount: (rowCount: number) => void;
 }
 
 const unparseConfig: Papa.UnparseConfig = {
@@ -28,7 +30,7 @@ const unparseConfig: Papa.UnparseConfig = {
 
 
 
-export default function Options({flashSize, setFlashSize, displayDec, setDisplayDec, table, setTable}: Props) {
+export default function Options({flashSize, setFlashSize, displayDec, setDisplayDec, table, setTable, rowCount, setRowCount}: Props) {
     
     const handleDownload = () => {
         const _table: {}[] = [];
@@ -72,7 +74,7 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
 
         <div className="options-row">
             <div className="options-column">
-                <FileSelect setTable={setTable} />
+                <FileSelect setTable={setTable} rowCount={rowCount} setRowCount={setRowCount} />
             </div>
             <div className="options-column">
                 <div className="options-column">
