@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   margin-top: 5vh;
-  
 }
 
 h1 {
@@ -15,8 +14,15 @@ a {
   color: #aaaaaa;
 }
 
+hr {
+  margin: 20px;
+  color: #30363d55;
+  /* background-color: #30363d; */
+  /* border-color: #30363d; */
+}
+
 .footer {
-  margin-top: 4em;
+  margin-top: 3em;
   margin-bottom: 1em;
-  font-size: .8em;
+  font-size: 0.8em;
 }
