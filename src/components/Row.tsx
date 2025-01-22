@@ -133,7 +133,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, handle
                     onMouseOver={() => handleShoeHornPreview(i)}
                     onMouseOut={() => handleShoeHornPreview()}
                 >
-                    X
+                    Auto
                 </button>
             }
             <input type="text" name="size" value={!displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
