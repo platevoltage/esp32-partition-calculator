@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import UpDown from './UpDown';
 import AddRow from './AddRow';
 import DeleteRow from './DeleteRow';
+import './Row.css';
+
 
 export interface Partition {
     name: string;
@@ -10,6 +12,7 @@ export interface Partition {
     offset: number;
     size: number;
     flags: string;
+    preview?: number;
 }
 
 interface Props {
@@ -18,10 +21,12 @@ interface Props {
     i: number;
     unusedSpace: number;
     displayDec: boolean;
+    handleShoeHorn: (i: number) => void;
+    handleShoeHornPreview: (i?: number) => void;
 }
 
 
-export default function Row({table, setTable, i, unusedSpace, displayDec}: Props) {
+export default function Row({table, setTable, i, unusedSpace, displayDec, handleShoeHorn, handleShoeHornPreview}: Props) {
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
@@ -31,6 +36,9 @@ export default function Row({table, setTable, i, unusedSpace, displayDec}: Props
             (-unusedSpace).toString(16).toUpperCase()
         );
     },[unusedSpace]);
+
+
+
 
   return (
     <>
@@ -99,17 +107,35 @@ export default function Row({table, setTable, i, unusedSpace, displayDec}: Props
 
         <div className="column number">
 
-            <input type="text" name="offset" value={!displayDec ? `${(table[i].offset || 0).toString()}` : `0x${(table[i].offset || 0).toString(16).toUpperCase()}`} onChange={(e) => {
-                table[i].offset = parseInt(e.target.value);
-                setTable([...table]);
-            }}>
-            </input>
+                <input style={{color: table[i].preview ? "#5555ff" : undefined}} type="text" name="offset" 
+                value={
+                    table[i].preview ?
+                        !displayDec ? `${table[i].preview!.toString()} kb` : `0x${table[i].preview!.toString(16).toUpperCase()}`
+                        :
+                        !displayDec ? `${(table[i].offset || 0).toString()}` : `0x${(table[i].offset || 0).toString(16).toUpperCase()}`
+                } 
+                onChange={(e) => {
+                    table[i].offset = parseInt(e.target.value);
+                    setTable([...table]);
+                }}>
+                </input>
+
+
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <UpDown table={table} setTable={setTable} i={i} param={"offset"}/>
             </div>
         </div>
 
         <div className="column number">
+            { unusedSpace < 0 && i < table.length - 1 &&
+                <button className="shoehorn"
+                    onClick={() => handleShoeHorn(i)}
+                    onMouseOver={() => handleShoeHornPreview(i)}
+                    onMouseOut={() => handleShoeHornPreview()}
+                >
+                    X
+                </button>
+            }
             <input type="text" name="size" value={!displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);

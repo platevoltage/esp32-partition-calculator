@@ -20,6 +20,7 @@ main {
 .number input {
   text-align: right;
   margin-right: 1em;
+  transition: color 0.2s;
 }
 
 select {
