@@ -11,6 +11,7 @@ function App() {
   const [flashSize, setFlashSize] = useState<number>(4096);
   const [table, setTable] = useState<Partition[]>([]);
   const [displayDec, setDisplayDec] = useState<boolean>(true);
+  const [flashSizeHighlight, setFlashSizeHighlight] = useState<boolean>(false);
 
   useEffect(() => { //update local storage
     if (table.length > 0) {
@@ -23,9 +24,9 @@ function App() {
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column'}}>
         <h1>ESP32 Partition Calculator</h1>
-        <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayDec={displayDec}/>
+        <Table table={table} setTable={setTable} flashSize={flashSize*1024} displayDec={displayDec} setFlashSizeHighlight={setFlashSizeHighlight} />
         
-        <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} table={table} setTable={setTable}/>
+        <Options flashSize={flashSize} displayDec={displayDec} setFlashSize={setFlashSize} setDisplayDec={setDisplayDec} table={table} setTable={setTable} flashSizeHighlight={flashSizeHighlight} />
 
         <div className="footer">
           <span>Written by Garrett Corbin &nbsp; x &nbsp; </span>

@@ -12,6 +12,7 @@ interface Props {
     setDisplayDec: (value: boolean) => void;
     table: Partition[];
     setTable: (value: Partition[]) => void;
+    flashSizeHighlight: boolean;
 }
 
 const unparseConfig: Papa.UnparseConfig = {
@@ -28,7 +29,7 @@ const unparseConfig: Papa.UnparseConfig = {
 
 
 
-export default function Options({flashSize, setFlashSize, displayDec, setDisplayDec, table, setTable}: Props) {
+export default function Options({flashSize, setFlashSize, displayDec, setDisplayDec, table, setTable, flashSizeHighlight}: Props) {
     
     const handleDownload = () => {
         const _table: {}[] = [];
@@ -59,7 +60,7 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
 
         <div className="options-row">
             <div className="options-column">
-                <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} />
+                <FlashSize flashSize={flashSize} setFlashSize={setFlashSize} highlight={flashSizeHighlight}/>
             </div>
 
             <div className="options-column">

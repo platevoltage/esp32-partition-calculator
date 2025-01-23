@@ -23,11 +23,12 @@ interface Props {
     unusedSpace: number;
     displayDec: boolean;
     flashSize: number;
+    setFlashSizeHighlight: (x: boolean) => void;
 
 }
 
 
-export default function Row({table, setTable, i, unusedSpace, displayDec, flashSize}: Props) {
+export default function Row({table, setTable, i, unusedSpace, displayDec, flashSize, setFlashSizeHighlight}: Props) {
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
@@ -93,6 +94,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                 return row;
             });
             setTable(_table);
+            setFlashSizeHighlight(false);
         }
     }
 
@@ -107,11 +109,15 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
             // if (_table[i].previewSize! > 0) {
                 setTable(_table);
             // }
+            if (table[i].previewSize! <= 0) {
+                setFlashSizeHighlight(true);
+            }
         } else {
             setTable(_table.map((row: Partition) => {
                 row.previewSize = undefined;
                 return row;
             }));
+            setFlashSizeHighlight(false);
         }
     }
 
@@ -269,7 +275,6 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
             value={
                 table[i].previewSize ?
                 table[i].previewSize! <= 0 ?
-                // false ?
                     "add FLASH" :
                         !displayDec ? `${table[i].previewSize!.toString()}` : `0x${table[i].previewSize!.toString(16).toUpperCase()}`
                         :
