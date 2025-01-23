@@ -1,0 +1,26 @@
+.shoehorn,
+.expand,
+.contract {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  border-radius: 5px;
+  height: 2em;
+  /* width: 2.4em; */
+  background-color: #161b22;
+  border: 2px solid #30363d;
+  color: inherit;
+  transition: background-color 0.2s;
+}
+
+.shoehorn:hover {
+  background-color: #5555ff77;
+}
+
+.expand:hover {
+  background-color: #55ff5577;
+}
+
+.contract:hover {
+  background-color: #ff555577;
+}
