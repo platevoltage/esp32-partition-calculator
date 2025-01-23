@@ -12,7 +12,8 @@ export interface Partition {
     offset: number;
     size: number;
     flags: string;
-    preview?: number;
+    previewOffset?: number;
+    previewSize?: number;
 }
 
 interface Props {
@@ -21,12 +22,12 @@ interface Props {
     i: number;
     unusedSpace: number;
     displayDec: boolean;
-    handleShoeHorn: (i: number) => void;
-    handleShoeHornPreview: (i?: number) => void;
+    flashSize: number;
+
 }
 
 
-export default function Row({table, setTable, i, unusedSpace, displayDec, handleShoeHorn, handleShoeHornPreview}: Props) {
+export default function Row({table, setTable, i, unusedSpace, displayDec, flashSize}: Props) {
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
@@ -36,6 +37,111 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, handle
             (-unusedSpace).toString(16).toUpperCase()
         );
     },[unusedSpace]);
+
+    function handleShoeHorn(i: number) {
+        console.log("shoehorn", table);
+        const _table = [...table];
+        const _unusedSpace = getUnusedSpace(i);
+        for (let _i = i+1; _i < _table.length; _i++) {
+            _table[_i].offset -= _unusedSpace;
+        }
+        setTable(_table.map((row: Partition) => {
+            row.previewOffset = undefined;
+            return row;
+        }));
+
+    }
+
+
+    function handleExpand(i: number) {
+        console.log("expand", table);
+        const _table = [...table];
+        const _unusedSpace = getUnusedSpace(i);
+        _table[i].size +=_unusedSpace;
+        setTable(_table.map((row: Partition) => {
+            row.previewSize = undefined;
+            return row;
+        }));
+    }
+
+    function handleExpandPreview(i?: number) {
+        console.log("HOVER", i)
+        const _table = [...table];
+        if (typeof i == "number") {
+            const _unusedSpace = getUnusedSpace(i);
+
+            _table[i].previewSize = _table[i].size + _unusedSpace;
+            setTable(_table);
+        } else {
+            setTable(table.map((row: Partition) => {
+                row.previewSize = undefined;
+                return row;
+            }));
+        }
+    }
+
+    function handleContract(i: number) {
+        console.log("expand", table);
+        // const _unusedSpace = getUnusedSpace(i);
+        console.log(table[i].previewSize, flashSize);
+        let _table = [...table];
+        // _table[i].size +=_unusedSpace;
+        if (_table[i].previewSize! > 0) {
+            _table[i].size = _table[i].previewSize!;
+            _table = _table.map((row: Partition) => {
+                row.previewSize = undefined;
+                return row;
+            });
+            setTable(_table);
+        }
+    }
+
+    function handleContractPreview(i?: number) {
+        console.log("HOVER", i)
+        const _table = [...table];
+        if (typeof i == "number" ) {
+            const _unusedSpace = getUnusedSpace(i);
+
+            _table[i].previewSize = _table[i].size + _unusedSpace;
+            console.log(_unusedSpace);
+            // if (_table[i].previewSize! > 0) {
+                setTable(_table);
+            // }
+        } else {
+            setTable(_table.map((row: Partition) => {
+                row.previewSize = undefined;
+                return row;
+            }));
+        }
+    }
+
+    function handleShoeHornPreview(i?: number) {
+        console.log("HOVER", i)
+        const _table = [...table];
+        if (typeof i == "number") {
+            const _unusedSpace = getUnusedSpace(i);
+            for (let _i = i+1; _i < _table.length; _i++) {
+                _table[_i].previewOffset = _table[_i].offset - _unusedSpace;
+            }
+            setTable(_table);
+        } else {
+            setTable(table.map((row: Partition) => {
+                row.previewOffset = undefined;
+                return row;
+            }));
+        }
+    }
+
+    function getUnusedSpace(i: number) {
+        const partitionSize = table[i].offset + table[i].size;
+        let nextOffset = table[i+1]?.offset;
+        if (isNaN(nextOffset)) {
+            nextOffset = flashSize;
+        }
+        
+        const unusedSpace: number = -(partitionSize - nextOffset);
+        return unusedSpace;
+    }
 
 
 
@@ -107,10 +213,10 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, handle
 
         <div className="column number">
 
-                <input style={{color: table[i].preview ? "#5555ff" : undefined}} type="text" name="offset" 
+                <input style={{color: table[i].previewOffset ? "#5555ff" : undefined}} type="text" name="offset" 
                 value={
-                    table[i].preview ?
-                        !displayDec ? `${table[i].preview!.toString()} kb` : `0x${table[i].preview!.toString(16).toUpperCase()}`
+                    table[i].previewOffset ?
+                        !displayDec ? `${table[i].previewOffset!.toString()}` : `0x${table[i].previewOffset!.toString(16).toUpperCase()}`
                         :
                         !displayDec ? `${(table[i].offset || 0).toString()}` : `0x${(table[i].offset || 0).toString(16).toUpperCase()}`
                 } 
@@ -136,7 +242,40 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, handle
                     Auto
                 </button>
             }
-            <input type="text" name="size" value={!displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`} onChange={(e) => {
+            {  unusedSpace !== 0 && i === table.length - 1 && table[i].previewSize !==  table[i].size &&
+                <button className="contract"
+                    onClick={() => handleContract(i)}
+                    onMouseOver={() => handleContractPreview(i)}
+                    onMouseOut={() => handleContractPreview()}
+                >
+                    Auto
+                </button>
+            }
+            { unusedSpace > 0 && 
+                <button className="expand"
+                    onClick={() => handleExpand(i)}
+                    onMouseOver={() => handleExpandPreview(i)}
+                    onMouseOut={() => handleExpandPreview()}
+                >
+                    Auto
+                </button>
+            }
+            
+            <input type="text" name="size" style={{
+                color: !table[i].previewSize ? undefined : 
+                i === table.length-1 && table[i].previewSize! < table[i].size ?  "#ff9999" : "#99ff99"
+            }}
+            // value={!displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`} 
+            value={
+                table[i].previewSize ?
+                table[i].previewSize! <= 0 ?
+                // false ?
+                    "add FLASH" :
+                        !displayDec ? `${table[i].previewSize!.toString()}` : `0x${table[i].previewSize!.toString(16).toUpperCase()}`
+                        :
+                        !displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`
+            } 
+            onChange={(e) => {
                 table[i].size = parseInt(e.target.value, 16);
                 setTable([...table]);
             }}>

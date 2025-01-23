@@ -1,4 +1,6 @@
-.shoehorn {
+.shoehorn,
+.expand,
+.contract {
   position: absolute;
   left: 4px;
   top: 4px;
@@ -13,4 +15,12 @@
 
 .shoehorn:hover {
   background-color: #5555ff77;
+}
+
+.expand:hover {
+  background-color: #55ff5577;
+}
+
+.contract:hover {
+  background-color: #ff555577;
 }

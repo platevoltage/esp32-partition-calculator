@@ -13,37 +13,6 @@ interface Props {
 export default function Table({table, setTable, flashSize, displayDec}: Props) {
     const [green, setGreen] = useState<boolean>(false);
 
-    function handleShoeHorn(i: number) {
-        console.log("shoehorn", table);
-        const _table = [...table];
-        const _unusedSpace = getUnusedSpace(i);
-        for (let _i = i+1; _i < _table.length; _i++) {
-            _table[_i].offset -= _unusedSpace;
-        }
-        setTable(_table.map((row: Partition) => {
-            row.preview = undefined;
-            return row;
-        }));
-
-    }
-
-    function handleShoeHornPreview(i?: number) {
-        console.log("HOVER", i)
-        const _table = [...table];
-        if (typeof i == "number") {
-            const _unusedSpace = getUnusedSpace(i);
-            for (let _i = i+1; _i < _table.length; _i++) {
-                _table[_i].preview = _table[_i].offset - _unusedSpace;
-            }
-            setTable(_table);
-        } else {
-            setTable(table.map((row: Partition) => {
-                row.preview = undefined;
-                return row;
-            }));
-        }
-    }
-
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
         let nextOffset = table[i+1]?.offset;
@@ -69,7 +38,7 @@ export default function Table({table, setTable, flashSize, displayDec}: Props) {
             {
                 table.map((_, i) => {
                     return (<div key={i}>
-                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayDec={displayDec} handleShoeHorn={handleShoeHorn} handleShoeHornPreview={handleShoeHornPreview}/>
+                        <Row table={table} setTable={setTable} i={i} unusedSpace={getUnusedSpace(i)} displayDec={displayDec} flashSize={flashSize} />
                     </div>)
                 })
             }
