@@ -92,7 +92,7 @@ export default function FileSelect({setTable, setFlashSize}: Props) {
             }}>
                 <option value="none">Load Example Table from Arduino</option>
                 <option value={`{"file": "default.csv", "size": 4096}`}>Default 4MB with spiffs (1.2 APP/1.5MB SPIFFS)</option>
-                <option value={`{"file": "default_ffat.csv, "size": 4096}`}>Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
+                <option value={`{"file": "default_ffat.csv", "size": 4096}`}>Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
                 <option value={`{"file": "ffat.csv", "size": 16384}`}>ffat</option>
                 <option value={`{"file": "default_8MB.csv", "size": 8192}`}>8M with spiffs (3MB APP/1.5MB SPIFFS)</option>
                 <option value={`{"file": "minimal.csv", "size": 2048}`}>Minimal (1.3MB APP/700KB SPIFFS)</option>
