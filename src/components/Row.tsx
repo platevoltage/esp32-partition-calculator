@@ -231,6 +231,11 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                     setTable([...table]);
                 }}>
                 </input>
+                {i===0 && table[i].offset !== 36864 &&
+                <div className="error">
+                    <div style={{color: "#ffff44"}}>Usually starts at {displayDec ? "0x9000" : "36864 bytes"}</div>
+                </div>
+                }
 
 
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
@@ -286,8 +291,8 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
             }}>
             </input>
             <div className="error">
-                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {!displayDec ? `${unusedSpace.toString()} bytes` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
-                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {!displayDec ? `${-unusedSpace.toString()} bytes` : `0x${(-unusedSpace).toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>Add {!displayDec ? `${unusedSpace.toString()} bytes` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>Subtract {!displayDec ? `${-unusedSpace.toString()} bytes` : `0x${(-unusedSpace).toString(16).toUpperCase()}`}</div>}
             </div>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
