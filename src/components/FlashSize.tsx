@@ -10,7 +10,7 @@ interface Props {
 export default function FlashSize({flashSize, setFlashSize, highlight}: Props) {
   return (
     <div className="input">
-        <div style={{backgroundColor: highlight ? "#ff222288" : "#00000000", display: "flex", padding: "10px", borderRadius: "6px"}}>
+        <div style={{backgroundColor: highlight ? "#ff222288" : "#00000000", display: "flex", padding: "10px", borderRadius: "6px", transition: "background-color .5s"}}>
           <label htmlFor="flashSize">Flash Size:
           </label>
 
