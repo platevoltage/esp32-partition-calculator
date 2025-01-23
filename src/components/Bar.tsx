@@ -71,12 +71,12 @@ export default function SegmentedBar({table}: Props) {
         <div ref={widthRef} style={{width: "100%"}}>
             { data.length > 0 &&
 
-                <VictoryStack horizontal height={20} width={width-10} colorScale={colors} domainPadding={{ x: 0, y: 0 }} padding={{ top: 0, bottom: 0, left: 0, right: 0 }}>
-            {data.map((d, index) => (
-                <VictoryBar barWidth={20} padding={0} key={index} data={[d]} />
-            ))}
-            </VictoryStack>
-        }
+                    <VictoryStack horizontal height={20} width={width-10} colorScale={colors} domainPadding={{ x: 0, y: 0 }} padding={{ top: 0, bottom: 0, left: 0, right: 0 }}>
+                    {data.map((d, index) => (
+                        <VictoryBar barWidth={20} padding={0} key={index} data={[d]} />
+                    ))}
+                </VictoryStack>
+            }
         </div>
     );
 };

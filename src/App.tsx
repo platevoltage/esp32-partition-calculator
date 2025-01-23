@@ -33,7 +33,9 @@ function App() {
           <span>Written by Garrett Corbin &nbsp; x &nbsp; </span>
           <a href="https://jgarrettcorbin.com" target="_blank" rel="noreferrer">https://jgarrettcorbin.com</a>
           <br></br><br></br>
-          <a style={{fontSize: "2em"}} href="https://github.com/platevoltage" target="_blank" rel="noreferrer"><i className="bi bi-github"></i></a>
+          <a style={{fontSize: "2em", margin: "0px 6px"}} href="https://github.com/platevoltage" target="_blank" rel="noreferrer"><i className="bi bi-github"></i></a>
+          <a style={{fontSize: "2em", margin: "0px 6px"}} href="https://www.linkedin.com/in/garrett-corbin-7a7777227/" target="_blank" rel="noreferrer"><i className="bi bi-linkedin"></i></a>
+          {/* <a style={{fontSize: "2em", margin: "0px 6px"}} href="https://github.com/platevoltage" target="_blank" rel="noreferrer"><i className="bi bi-github"></i></a> */}
           
 
         <hr />
