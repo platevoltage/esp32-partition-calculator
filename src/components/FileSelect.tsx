@@ -7,6 +7,7 @@ interface Props {
     // table: Partition[];
     setTable: (table: Partition[]) => void;
     // flashSize: number;
+    setFlashSize: (value: number) => void;
 }
 
 async function getCSV(fileName: string) {
@@ -18,7 +19,7 @@ async function getCSV(fileName: string) {
     return (await res.text()).trim();
 }
 
-export default function FileSelect({setTable}: Props) {
+export default function FileSelect({setTable, setFlashSize}: Props) {
     const parseConfig: Papa.ParseConfig = {
         delimiter: "",	// auto-detect
         quoteChar: '"',
@@ -81,34 +82,38 @@ export default function FileSelect({setTable}: Props) {
         <div className="select">
             <select name="presets" value="none" onChange={(e) => {
                 if (e.target.value !== "none") {
-                    (async () => Papa.parse(await getCSV(e.target.value), parseConfig))();
+                    const parse = JSON.parse(e.target.value);
+                    (async () => Papa.parse(await getCSV(parse.file), parseConfig))();
+                    if (parse.size) {
+                        setFlashSize(parse.size);
+                    }
                 }
 
             }}>
                 <option value="none">Load Example Table from Arduino</option>
-                <option value="default.csv">Default 4MB with spiffs (1.2 APP/1.5MB SPIFFS)</option>
-                <option value="default_ffat.csv">Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
-                {/* <option value="ffat.csv">ffat</option> */}
-                <option value="default_8MB.csv">8M with spiffs (3MB APP/1.5MB SPIFFS)</option>
-                <option value="minimal.csv">Minimal (1.3MB APP/700KB SPIFFS)</option>
-                <option value="no_ota.csv">No OTA (2MB APP/2MB SPIFFS)</option>
-                <option value="noota_3g.csv">No OTA (1MB APP/3MB SPIFFS)</option>
-                <option value="noota_ffat.csv">No OTA (2MB APP/2MB FATFS)</option>
-                <option value="noota_3gffat.csv">No OTA (1MB APP/3MB FATFS)</option>
-                <option value="huge_app.csv">Huge App (3MB No OTA/1MB SPIFFS)</option>
-                <option value="min_spiffs.csv">Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)</option>
+                <option value={`{"file": "default.csv", "size": 4096}`}>Default 4MB with spiffs (1.2 APP/1.5MB SPIFFS)</option>
+                <option value={`{"file": "default_ffat.csv, "size": 4096}`}>Default 4MB with ffat (1.2 APP/1.5MB FATFS)</option>
+                <option value={`{"file": "ffat.csv", "size": 16384}`}>ffat</option>
+                <option value={`{"file": "default_8MB.csv", "size": 8192}`}>8M with spiffs (3MB APP/1.5MB SPIFFS)</option>
+                <option value={`{"file": "minimal.csv", "size": 2048}`}>Minimal (1.3MB APP/700KB SPIFFS)</option>
+                <option value={`{"file": "no_ota.csv", "size": 4096}`}>No OTA (2MB APP/2MB SPIFFS)</option>
+                <option value={`{"file": "noota_3g.csv", "size": 4096}`}>No OTA (1MB APP/3MB SPIFFS)</option>
+                <option value={`{"file": "noota_ffat.csv", "size": 4096}`}>No OTA (2MB APP/2MB FATFS)</option>
+                <option value={`{"file": "noota_3gffat.csv", "size": 4096}`}>No OTA (1MB APP/3MB FATFS)</option>
+                <option value={`{"file": "huge_app.csv", "size": 4096}`}>Huge App (3MB No OTA/1MB SPIFFS)</option>
+                <option value={`{"file": "min_spiffs.csv", "size": 4096}`}>Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)</option>
                 {/* <option value="bare_minimum_2MB.csv">bare_minimum_2MB</option> */}
                 {/* <option value="max_app_8MB.csv">max_app_8MB</option> */}
                 {/* <option value="large_spiffs_16MB.csv">large_spiffs_16MB</option> */}
-                <option value="default_16MB.csv">16M Flash (2MB APP/12.5MB FATFS)</option>
-                <option value="app3M_fat9M_16MB.csv">16M Flash (3MB APP/9.9MB FATFS)</option>
-                <option value="rainmaker.csv">RainMaker</option> 
+                <option value={`{"file": "default_16MB.csv", "size": 16384}`}>16M Flash (2MB APP/12.5MB FATFS)</option>
+                <option value={`{"file": "app3M_fat9M_16MB.csv", "size": 16384}`}>16M Flash (3MB APP/9.9MB FATFS)</option>
+                <option value={`{"file": "rainmaker.csv", "size": 4096}`}>RainMaker</option> 
             </select>
             {/* <input type="file">upload</input> */}
                 <br></br>
                 <br></br>
             <label className="file-upload">
-            <input type="file" id="csvupload" name="csvupload" accept="text/csv" onChange={handleLoad}></input>Upload csv
+            <input type="file" id="csvupload" name="csvupload" accept="text/csv" onChange={handleLoad}></input>Upload CSV
             </label>
         </div>
     )

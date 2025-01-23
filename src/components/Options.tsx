@@ -73,11 +73,11 @@ export default function Options({flashSize, setFlashSize, displayDec, setDisplay
 
         <div className="options-row">
             <div className="options-column">
-                <FileSelect setTable={setTable} />
+                <FileSelect setTable={setTable} setFlashSize={setFlashSize}/>
             </div>
             <div className="options-column">
                 <div className="options-column">
-                    <button className="button" onClick={handleDownload}>Save</button>
+                    <button className="button" onClick={handleDownload}>Save as CSV</button>
                 </div>
             </div>
         </div>
