@@ -245,7 +245,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                     onMouseOver={() => handleShoeHornPreview(i)}
                     onMouseOut={() => handleShoeHornPreview()}
                 >
-                    Auto
+                    <i className="bi bi-magic"></i>
                 </button>
             }
             {  unusedSpace !== 0 && i === table.length - 1 && table[i].previewSize !==  table[i].size &&
@@ -254,7 +254,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                     onMouseOver={() => handleContractPreview(i)}
                     onMouseOut={() => handleContractPreview()}
                 >
-                    Auto
+                    <i className="bi bi-magic"></i>
                 </button>
             }
             { unusedSpace > 0 && 
@@ -263,7 +263,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                     onMouseOver={() => handleExpandPreview(i)}
                     onMouseOut={() => handleExpandPreview()}
                 >
-                    Auto
+                    <i className="bi bi-magic"></i>
                 </button>
             }
             
@@ -275,7 +275,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
             value={
                 table[i].previewSize ?
                 table[i].previewSize! <= 0 ?
-                    "add FLASH" :
+                    "ADD FLASH" :
                         !displayDec ? `${table[i].previewSize!.toString()}` : `0x${table[i].previewSize!.toString(16).toUpperCase()}`
                         :
                         !displayDec ? `${(table[i].size || 0).toString()}` : `0x${(table[i].size || 0).toString(16).toUpperCase()}`
@@ -286,8 +286,8 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
             }}>
             </input>
             <div className="error">
-                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {!displayDec ? `${unusedSpace.toString()} kb` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
-                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {!displayDec ? `${-unusedSpace.toString()} kb` : `0x${(-unusedSpace).toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace > 0 && <div style={{color: "#99ff99"}}>add {!displayDec ? `${unusedSpace.toString()} bytes` : `0x${unusedSpace.toString(16).toUpperCase()}`}</div>}
+                    {unusedSpace < 0 && <div style={{color: "#ff9999"}}>subtract {!displayDec ? `${-unusedSpace.toString()} bytes` : `0x${(-unusedSpace).toString(16).toUpperCase()}`}</div>}
             </div>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <UpDown table={table} setTable={setTable} i={i} param={"size"}/>
