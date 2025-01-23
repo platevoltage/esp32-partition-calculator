@@ -121,6 +121,37 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
         }
     }
 
+    function handleFixOffset(i: number) {
+        console.log("expand", table);
+        // const _unusedSpace = getUnusedSpace(i);
+        console.log(table[i].previewSize, flashSize);
+        let _table = [...table];
+        _table[i].offset = 36864;
+        _table[i].previewOffset = undefined;
+        setTable(_table);
+
+        
+    }
+
+    function handleFixOffsetPreview(i?: number) {
+        console.log("HOVER", i)
+        const _table = [...table];
+        if (typeof i == "number" ) {
+            const _unusedSpace = getUnusedSpace(i);
+
+            _table[i].previewOffset = 36864;
+            console.log(_unusedSpace);
+            setTable(_table);
+            
+        } else {
+            setTable(_table.map((row: Partition) => {
+                row.previewOffset = undefined;
+                return row;
+            }));
+            setFlashSizeHighlight(false);
+        }
+    }
+
     function handleShoeHornPreview(i?: number) {
         console.log("HOVER", i)
         const _table = [...table];
@@ -219,7 +250,7 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
 
         <div className="column number">
 
-                <input style={{color: table[i].previewOffset ? "#5555ff" : undefined}} type="text" name="offset" 
+                <input style={{color: !table[i].previewOffset ? undefined : i===0 ? "#ffff55" : "#5555ff"}} type="text" name="offset" 
                 value={
                     table[i].previewOffset ?
                         !displayDec ? `${table[i].previewOffset!.toString()}` : `0x${table[i].previewOffset!.toString(16).toUpperCase()}`
@@ -232,9 +263,19 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
                 }}>
                 </input>
                 {i===0 && table[i].offset !== 36864 &&
-                <div className="error">
-                    <div style={{color: "#ffff44"}}>Usually starts at {displayDec ? "0x9000" : "36864 bytes"}</div>
-                </div>
+                    <>
+                        <div className="error">
+                            <div style={{color: "#ffff44"}}>Usually starts at {displayDec ? "0x9000" : "36864 bytes"}</div>
+                        </div>
+        
+                        <button className="fix-offset"
+                            onClick={() => handleFixOffset(i)}
+                            onMouseOver={() => handleFixOffsetPreview(i)}
+                            onMouseOut={() => handleFixOffsetPreview()}
+                            >
+                            <i className="bi bi-magic"></i>
+                        </button>
+                    </>
                 }
 
 

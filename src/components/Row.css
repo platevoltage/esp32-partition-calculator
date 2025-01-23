@@ -1,6 +1,7 @@
 .shoehorn,
 .expand,
-.contract {
+.contract,
+.fix-offset {
   position: absolute;
   left: 4px;
   top: 4px;
@@ -23,4 +24,8 @@
 
 .contract:hover {
   background-color: #ff555577;
+}
+
+.fix-offset:hover {
+  background-color: #ffff5577;
 }
