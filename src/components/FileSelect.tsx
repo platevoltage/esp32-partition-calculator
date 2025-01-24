@@ -46,7 +46,8 @@ export default function FileSelect({setTable, setFlashSize}: Props) {
                         subType: partition[2].trim(), 
                         offset: parseInt(partition[3], 16), 
                         size: parseInt(partition[4], 16),
-                        flags: partition[5].trim()
+                        flags: partition[5].trim(),
+                        new: false
                     });
                 }
                 setTable(_table);

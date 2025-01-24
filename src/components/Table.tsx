@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function Table({table, setTable, flashSize, displayDec, setFlashSizeHighlight}: Props) {
-    const [green, setGreen] = useState<boolean>(false);
+    const [greenInsert, setGreenInsert] = useState<boolean>(false);
 
     function getUnusedSpace(i: number) {
         const partitionSize = table[i].offset + table[i].size;
@@ -43,8 +43,8 @@ export default function Table({table, setTable, flashSize, displayDec, setFlashS
                     </div>)
                 })
             }
-            <div className="green-row bottom" style={{height: `${green ? ".5em" : "0em"}`}}>
-                <AddRow table={table} setTable={setTable} i={table.length} setGreen={setGreen} />
+            <div className="green-row bottom" style={{height: `${greenInsert ? ".5em" : "0em"}`}}>
+                <AddRow table={table} setTable={setTable} i={table.length} setGreenInsert={setGreenInsert} />
             </div>
         </main>
     )

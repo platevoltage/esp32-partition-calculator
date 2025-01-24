@@ -14,6 +14,7 @@ export interface Partition {
     flags: string;
     previewOffset?: number;
     previewSize?: number;
+    new: boolean;
 }
 
 interface Props {
@@ -32,12 +33,29 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
 
     const [red, setRed] = useState<boolean>(false);
     const [green, setGreen] = useState<boolean>(false);
+    const [expand, setExpand] = useState<boolean>(true);
+    const [greenInsert, setGreenInsert] = useState<boolean>(false);
 
     useEffect(() => {
         console.log(
             (-unusedSpace).toString(16).toUpperCase()
         );
     },[unusedSpace]);
+
+    useEffect(() => {
+        if (table[i].new) {
+            setGreen(true);
+            // setExpand(false);
+        }
+        // setTimeout(() => {
+        //     setExpand(true);
+        // },300);
+        setTimeout(() => {
+            setGreen(false);
+            table[i].new = false;
+            // setTable([...table])
+        }, 2000);
+    }, [table]);
 
     function handleShoeHorn(i: number) {
         console.log("shoehorn", table);
@@ -181,14 +199,27 @@ export default function Row({table, setTable, i, unusedSpace, displayDec, flashS
     }
 
 
+    let backgroundColor = () => {
+        if (red) return "#ff000022";
+        else if (green) return "#00ff0022";
+        else return "inherit";
+    }
 
+    // setTimeout(() => {
+    //     // setGreen(false);
+    //     console.log("off")
+    //     for (let row of table) {
+    //         row.new = false;
+    //     }
+    //     // setTable([...table])
+    // }, 2000);
 
   return (
     <>
-    <div className="green-row" style={{height: `${green ? ".5em" : "0em"}`}}>
-        <AddRow table={table} setTable={setTable} i={i} setGreen={setGreen}/>
+    <div className="green-row" style={{height: `${greenInsert ? ".5em" : "0em"}`}}>
+        <AddRow table={table} setTable={setTable} i={i} setGreenInsert={setGreenInsert} />
     </div>
-    <div className={`row ${i===table.length-1 && "bottom"}`} style={{backgroundColor: `${red ? "#ff000022" : "inherit"}`}}>
+    <div className={`row ${i===table.length-1 && "bottom"}`} style={{backgroundColor: backgroundColor(), height: expand ? "3em" : "0em"}}>
         <DeleteRow table={table} setTable={setTable} i={i} setRed={setRed}/>
 
         <div className="column">
